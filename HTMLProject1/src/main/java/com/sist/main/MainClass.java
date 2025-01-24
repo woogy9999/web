@@ -38,7 +38,7 @@ public class MainClass {
         				
         	}
         	else if(menu==2)
-        	{
+        	{ 
         		System.out.print("학번 입력:");
         		int hak=scan.nextInt();
         		StudentDAO dao=
