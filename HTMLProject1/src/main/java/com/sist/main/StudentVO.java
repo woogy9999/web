@@ -23,6 +23,7 @@ public class StudentVO {
 	}
 	public int getMath() {
 		return math;
+		
 	}
 	public void setMath(int math) {
 		this.math = math;
