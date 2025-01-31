@@ -131,8 +131,60 @@ public class BoardDAO {
 		}
 		return total;
 	}
+
 	// 2. 상세보기 ----------- SELECT
+	public BoardVO boardDetailData(int no) {
+		BoardVO vo = new BoardVO();
+
+		try {
+			getConnection();
+			String sql = "UPDATE htmlboard set " + "hit=hit+1 " + "WHERE no=" + no;
+			ps = conn.prepareStatement(sql);
+			ps.executeUpdate();
+			sql="SELECT no,name,subject,content,"
+					+ "TO_CHAR(regdate,'YYYY-MM-DD HH24-MI-SS'),hit "
+					+ "FROM htmlboard "
+					+ "WHERE no="+no;
+			ps=conn.prepareStatement(sql);
+			ResultSet rs=ps.executeQuery();
+			rs.next();
+			vo.setNo(rs.getInt(1));
+			vo.setName(rs.getString(2));
+			vo.setSubject(rs.getString(3));
+			vo.setContent(rs.getString(4));
+			vo.setDbday(rs.getString(5));
+			vo.setHit(rs.getInt(6));
+						
+			rs.close();
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			disConnection();
+		}
+		return vo;
+	}
 	// 3. 글쓰기 INSERT
+
+	public void boardInsert(BoardVO vo) {
+		try {
+			getConnection();
+			String sql = "INSERT INTO htmlboard(no,name,subject,content,pwd) " + "VALUES(hb_no_seq.nextval,?,?,?,?)";
+			ps = conn.prepareStatement(sql);
+
+			ps.setString(1, vo.getName());
+			ps.setString(2, vo.getSubject());
+			ps.setString(3, vo.getContent());
+			ps.setString(4, vo.getPwd());
+
+			// 실행
+			ps.executeUpdate(); // commit이 포함되어 있음
+		} catch (Exception e) {
+
+		}
+
+	}
 	// 4. 수정 UPDATE
 	// 5. 삭제 DELETE
 	// => 자료실 => 댓글 => 예약 => 결제 => 장바구니 => 추천

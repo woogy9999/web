@@ -16,6 +16,35 @@ import java.util.*;
 
 // tomcat => 9버전 => javax.servlet.*
 // tomcat => 10버전 => jakarta.servlet.*
+
+/*
+		servlet : 동적페이지 / html : 정적페이지
+									-------
+									데이터 변경이 안된다
+				| 한개의 파일에서 데이터 변경이 가능
+				| server+let : 서버에서 실행하는 가벼운 프로그램 
+					단점 : 소스 변경시마다 컴파일을 해야서 출력
+					=> 컴파일 없이 실행 => JSP 
+					장점 : 보안 뛰어나다 , 소스를 감출 수 있다 
+						JSP  : 보안 취약 , 소스를 감출 수 없다.
+						=> servlet => java => class파일만 전송
+						=> jsp => 통으로 전송 (view)
+						=> servlet => spring은 라이브러리가 서블릿으로
+						
+						
+						사용자 요청 => get 방식
+						=> 단순한 검색 (page,검색) => 화면 ui
+						DEFAULT
+						
+						처리용 => POST 방식
+						<form> , ajax , vuejs => 지정이 가능
+						
+						
+						
+						
+					
+ */
+
 @WebServlet("/BoardList")
 public class BoardList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -49,7 +78,8 @@ public class BoardList extends HttpServlet {
 		List<BoardVO> list = dao.boardListData(curpage);
 		// 총페이지
 		int totalpage = dao.boardTotalPage();
-
+		// 루트 계정
+		
 		// String today=new SimpleDateFormat("yyyy-MM-dd").format(new Date());
 		Date date = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -76,9 +106,10 @@ public class BoardList extends HttpServlet {
 		out.println("</tr>");
 		// 출력 위치
 		for (BoardVO vo : list) {
+			// html => 화면 이동 <a> : 화면 이동 <form> : 데이터전송 + 화면이동
 			out.println("<tr>");
 			out.println("<td width=10% align=center>" + vo.getNo() + "</td>");
-			out.println("<td width=45%>" + vo.getSubject());
+			out.println("<td width=45%><a href=BoardDetail?no="+vo.getNo()+">" + vo.getSubject()+"</a>");
 			out.println("&nbsp");
 			if (today.equals(vo.getDbday())) {
 				out.println("<sup><img src=image/new.gif></sup>");
