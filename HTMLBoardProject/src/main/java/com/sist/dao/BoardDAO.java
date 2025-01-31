@@ -187,5 +187,39 @@ public class BoardDAO {
 	}
 	// 4. 수정 UPDATE
 	// 5. 삭제 DELETE
+	public boolean boardDelete(int no,String pwd) {
+		
+		boolean bCheck=false;
+		try {
+			getConnection();
+			
+			// 1. 비밀번호 체크
+			// 2. 삭제
+			String sql="SELECT pwd FROM htmlboard WHERE no="+no;
+			ps=conn.prepareStatement(sql);
+			
+			ResultSet rs=ps.executeQuery();
+			rs.next();
+			String db_pwd=rs.getString(1);
+			rs.close();
+			
+			
+			if(db_pwd.equals(pwd)) {
+				
+				bCheck=true;
+				sql="DELETE FROM htmlboard WHERE no="+no;
+				ps=conn.prepareStatement(sql);
+				ps.executeUpdate();
+				
+			}else {
+				bCheck=false;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			disConnection();
+		}
+		return bCheck;
+	}
 	// => 자료실 => 댓글 => 예약 => 결제 => 장바구니 => 추천
 }
