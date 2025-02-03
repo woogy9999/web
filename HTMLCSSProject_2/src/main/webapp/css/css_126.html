@@ -1,0 +1,57 @@
+<!--
+
+	*** name 속성 : 자바와 연결 => 데이터 전송
+		---- <input> , <select> , <textarea>
+		----- 중복이 있으면 안된다.
+		
+	속성 선택자
+	---------
+		**<input type=text class="">
+		**<input type=password class="">
+		-------------------------- width:200
+		<input type=file class="">
+		<input type=range class="">
+		-------------------------- width:300
+		<input type=radio id="">
+		
+		-------------------------- width:100
+		
+		*** 선택자중에 class 선택자는 여러개 사용이 가능
+			<h1 class="a b c"> => 공백 => 클래스를 3개 사용
+			
+		*** 선택자중에 id 선택자는 한개만 사요잉 가능
+		
+	태그명[속성명=값] 
+	예) input[type="text"]
+		{
+			width:200px;
+		}
+		input[type="password"]
+		{
+			width:200px;
+		}
+		=> 여러개를 동시에 처리
+		input[type="text],input[type="password"]{
+						--- , 구분
+			width:200px;
+		}		
+	
+		
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+.aaa {
+	color: blue;
+}
+</style>
+</head>
+<body>
+	<h1 class="aaa">java</h1>
+	<h1 class="aaa">Oracle</h1>
+	<h1 class="aaa">HTML/CSS(Front 기초)</h1>
+</body>
+</html>
