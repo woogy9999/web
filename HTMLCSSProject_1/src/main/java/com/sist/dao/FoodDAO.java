@@ -30,6 +30,7 @@ public class FoodDAO {
 		try {
 			conn = DriverManager.getConnection(URL, "hr", "happy");
 		} catch (Exception ex) {
+			
 		}
 	}
 
