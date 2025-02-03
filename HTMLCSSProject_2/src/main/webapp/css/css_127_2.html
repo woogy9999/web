@@ -1,0 +1,115 @@
+
+<!-- 상태 선택자
+	
+	=> : checked
+	=> : focus
+	=> : enabled
+	=> : disabled
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+#a:active, #b:active, #c:active {
+	color: red
+}
+
+#a:hover, #b:hover, #c:hover {
+	color: green
+}
+
+input[type="checkbox"]:checked {
+	box_shaow: 0 0 0 3px hotpink;
+}
+
+ul li:nth-child(2n) {
+	color: yellow;
+}
+
+ul li:nth-child(2n+1) {
+	color: cyan;
+}
+
+ul li:first-child {
+	color: red;
+	font-weight: bold;
+}
+
+ul li:last-child {
+	color: blue;
+	font-weight: bold;
+}
+table thead tr:first-child {
+	background: orange;
+}
+table tbody tr:nth-child(2n) {
+	background: rgb(255,255,220);
+}
+table tbody td:nth-child(4n+2){
+	background: green;
+}
+table tbody td:nth-child(4n+3){
+	background: cyan;
+}
+table tbody td:nth-child(4n+4){
+	background: magenta;
+}
+</style>
+</head>
+<body>
+	<h1>:active,:hover</h1>
+	<h3 id="a">HTML CSS</h3>
+	<h3 id="b">HTML5 CSS3</h3>
+	<h3 id="c">JavaScript ES6.0</h3>
+
+	<ul>
+		<li>데이터1</li>
+		<li>데이터2</li>
+		<li>데이터3</li>
+		<li>데이터4</li>
+		<li>데이터5</li>
+		<li>데이터6</li>
+		<li>데이터7</li>
+	</ul>
+
+	<h1>table에서 처리</h1>
+	<table width=500 border=1 bordercolor=black>
+	<thead>
+		<tr>
+			<th>이름</th>
+			<th>국어</th>
+			<th>영어</th>
+			<th>수학</th>
+		</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td align=center>홍길동</td>
+				<td align=center>90</td>
+				<td align=center>80</td>
+				<td align=center>70</td>
+			</tr>
+			<tr>
+				<td align=center>박문수</td>
+				<td align=center>90</td>
+				<td align=center>80</td>
+				<td align=center>70</td>
+			</tr>
+			<tr>
+				<td align=center>김길동</td>
+				<td align=center>90</td>
+				<td align=center>80</td>
+				<td align=center>70</td>
+			</tr>
+			<tr>
+				<td align=center>박길동</td>
+				<td align=center>90</td>
+				<td align=center>80</td>
+				<td align=center>70</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
