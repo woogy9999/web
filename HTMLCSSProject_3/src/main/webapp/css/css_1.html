@@ -1,0 +1,110 @@
+
+<!-- 
+		1. CSS 적용방법
+		= 외부 CSS : 파일을 제작 => .css
+						<link rel="stylesheet" href=css>
+						
+		= 내부 CSS  : <style type="text/css">
+					 </style>
+		= 인라인 CSS : 태그 
+		
+		2. 선택자 (selector)
+			= CSS 적용 / 자바스크립트(태그 제어) / Jsoup크롤링
+											-----------
+											web크롤링 => 사이트 데이터 수집
+		
+		$('선택자').이벤트 처리
+		$('#btn').click(function(){
+			버튼 클릭
+		))
+		doc.select("선택자")
+			
+		129page 기본 선택자
+		= id : 중복없는 태그를 적용
+		= class
+		
+		---------태그선택자 사용자 정의가 없다 (표준화)
+				  ------- 디자인(화면 UI) , 이벤트처리 , 데이터수집
+				  
+				  
+		-----
+		텍스트 속성
+		=> 단위
+		=> 스타일(글꼴)
+		=> 정렬
+		
+		=> 이미지 관련 속성
+		=> 위치 속성
+		=> border 속성
+		=> 목록 속성
+		=> POSITION
+		=> 기타 (레이어, 이동 속성)
+		=> 반응형 웹
+		=> CSS 라이브러리
+			=> BootStrap
+			=> TailWind
+		
+		
+				  
+ -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+p:nth-child(1) {
+	/* font-size: 16px; */
+	/* font-size: 100%; */
+	font-size: 1.0em;
+}
+
+p:nth-child(2) {
+	/* font-size: 24px; */
+	/* font-size: 150%; */
+	font-size: 1.5em;
+}
+
+p:nth-child(3) {
+	/* font-size: 32px; */
+	/* font-size: 200%; */
+	font-size: 2.0em;
+}
+
+p:nth-child(4) {
+	
+}
+
+ul li:nth-child(1) {
+	color: green;
+}
+
+ul li:nth-child(2) {
+	/* color: rgb(97, 128, 255); */
+	color:rgba(50,130,246,0.3); /* rgba 투명모드 */
+}
+
+ul li:nth-child(3) {
+	color: #6180FF
+}
+</style>
+
+</head>
+<body>
+	<h1>글자 크기 단위</h1>
+	<p>HELLO CSS1</p>
+	<p>HELLO CSS2</p>
+	<p>HELLO CSS3</p>
+	<p>HELLO CSS4</p>
+
+	<h1>색상 처리</h1>
+	<ul>
+		<li>Hello HTML/CSS 1</li>
+		<li>Hello HTML/CSS 2</li>
+		<li>Hello HTML/CSS 3</li>
+	</ul>
+
+</body>
+</html>
