@@ -26,7 +26,7 @@ public class FoodList extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		// 3. 출력전에 오라클 데이터 읽기
 		FoodDAO dao = FoodDAO.newInstance();
-		// 4. 사용자 요청 = 데이터 받기
+		// 4. 사용자 요청 = 데이터 받기 
 		String page = request.getParameter("page");
 		if (page == null)
 			page = "1"; // 초기값 지정 => 오류
@@ -48,8 +48,7 @@ public class FoodList extends HttpServlet {
 
 		out.println("<html>");
 		out.println("<head>");
-		out.println(
-				"<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css\">");
+		out.println("<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css\">");
 		out.println("<link rel=stylesheet href=css/food.css>");
 		out.println("</head>");
 		out.println("<body>");
@@ -99,6 +98,36 @@ public class FoodList extends HttpServlet {
 
 	//	out.println(" <li><a href=\"#\">&gt;</a></li>"); // > 모양
 		out.println("</ul>");
+		out.println("</div>");
+		
+		out.println("<div class=row>");
+		out.println("<h3>최신 방문 맛집</h3>");
+		List<FoodVO> cList=new ArrayList<FoodVO>();
+		Cookie[] cookies=request.getCookies();
+		if(cookies!=null) { // cookie에 값이 저장되어있다면
+			
+			// (키 , 값) => getname , getvalue
+			// 최신순으로
+			for(int i=cookies.length-1; i>=0; i--) {
+				if(cookies[i].getName().startsWith("food_"))
+				{
+					System.out.println("77");
+					String fno=cookies[i].getValue();
+					FoodVO vo=dao.foodCookieData(Integer.parseInt(fno));
+					cList.add(vo);
+					
+				}
+			}
+			
+		}
+		for(int i=0; i<cList.size(); i++) {
+			FoodVO cvo=cList.get(i);
+			if(i>8) break;
+			out.println("<a href=FoodDetail?fno="+cvo.getFno()+">");
+			out.println("<img src="+cvo.getPoster()+" style=\"width:100px;height:100px;\" class=img-rounded title="+cvo.getName()+">");
+			out.println("</a>");
+		}
+		out.println("<hr>");
 		out.println("</div>");
 		out.println("</div>");
 		out.println("</body>");
