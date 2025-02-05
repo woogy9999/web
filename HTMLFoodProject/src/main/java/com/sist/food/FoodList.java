@@ -78,7 +78,7 @@ public class FoodList extends HttpServlet {
 		out.println("<div class=\"row text-center\">");
 		out.println("<ul class=\"pagination\">");
 	//	out.println(" <li><a href=\"#\">&lt;</a></li>"); //<모양
-
+ 
 		if (startPage > 1) {
 			out.println("<li><a href=\"FoodList?page=" + (startPage - 1) + "\">&lt;</a></li>");
 		}
