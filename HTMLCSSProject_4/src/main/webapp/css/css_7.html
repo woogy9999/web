@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="table.css">
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+let i=0;
+$(function(){ // window.onload=function(){}
+	$('.dataTr').click(function(){
+		if(i==0){
+			i=1;
+			$('#content').show("slow");
+		}else{
+			i=0;
+			$('#content').hide("slow");
+			
+		}
+	})
+	
+	
+})
+</script>
+</head>
+<body>
+	<table class="table_content" width=700>
+		<tr>
+		<th>번호</th>
+		<th>제목</th>
+		<th>이름</th>
+		<th>작성일</th>
+		<th>조회수</th>
+		
+		</tr>
+	
+		<tr class="dataTr">
+			<td class="text-center">1</td>
+			<td>가자 '강제이주+소유권' 주장 트럼프 새로운 중동 판도라상자 되나</td>
+			<td class="text-center">홍길동</td>
+			<td class="text-center">2025-02-05</td>
+			<td class="text-center">10</td>
+			
+		</tr>
+		<tr id="content" style="display: none">
+			<td colspan=5 height="200" class="text-left" valign="top">
+			<pre>
+김동현 특파원 = 도널드 트럼프 미국 대통령은 
+이스라엘과 하마스의 전쟁으로 팔레스타인 거주민들이 큰 인적·물적 
+피해를 본 가자지구를 미국이 장기간 관리·개발하는 구상을 제시했다.
+
+가자지구의 통치·소유 문제가 그간 이스라엘과 아랍 국가들 간 갈등의 
+주요 원인이었다는 점에서 이스라엘의 동맹인 미국이 가자지구를 소유하겠다는
+ 트럼프 대통령의 구상은 미국 안팎에서 큰 논란을 일으킬 것으로 보인다.
+
+트럼프 대통령은 4일(현지시간) 백악관에서 베냐민 네타냐후 
+이스라엘 총리와 회담한 뒤 개최한 기자회견에서 가자지구의 팔레스타인 
+주민을 가자지구가 아닌 다른 지역에 재정착시켜야 한다면서 
+"미국이 가자지구를 장악할 것(take over)"이라고 밝혔다.
+
+트럼프 대통령은 "우리는 가자지구를 소유할 것이며 현장의 모든
+ 위험한 불발탄과 다른 무기의 해체를 책임지고, 부지를 평탄하게 하고, 
+ 파괴된 건물을 철거하고, 지역 주민에게 일자리와 주거를 무한정으로 
+ 공급하는 경제 발전을 일으킬 것"이라고 말했다.</pre>
+		</tr>
+	</table>
+</body>
+</html>
