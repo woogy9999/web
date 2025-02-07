@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import java.util.StringTokenizer;
 
 import com.sist.dao.*;
@@ -46,28 +47,35 @@ public class FoodDetail extends HttpServlet {
 				
 			 */
 			//1 . 사용자가 보낸 데이터 받기
-			String fno=request.getParameter("fno");
-			//2 . 데이터베이스 연결
-			FoodDAO dao=FoodDAO.newInstance();
-			FoodVO vo=dao.foodDetailData(Integer.parseInt(fno));
-			
-			
-			out.println("<html>");
-			out.println("<head>");
-			out.println("<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css\">");
-			out.println("<link rel=stylesheet href=css/food.css>");
-			out.println("</head>");
-			out.println("<body>");
-			out.println("<div class=container>");
-			out.println("<div class=row>");
-			out.println("<table class=table>");
-			out.println("<tr>");
-			StringTokenizer st=new StringTokenizer(vo.getImage(),",");
-			while(st.hasMoreTokens()) {
-				out.println("<td class=text-center>");
-				out.println("<img src=https://www.menupan.com"+st.nextToken()+" style=\"width:100%\">");
-				out.println("</td>");
-			}
+			 String fno=request.getParameter("fno");
+			 // 2. 데이터베이스 연결 
+			 FoodDAO dao=FoodDAO.newInstance();
+			 FoodVO vo=dao.foodDetailData(Integer.parseInt(fno));
+			    out.println("<html>");
+				out.println("<head>");
+				out.println("<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css\">");
+				out.println("<link rel=stylesheet href=css/food.css>");
+				out.println("<script src=js/update.js></script>");
+				
+				out.println("</head>");
+				out.println("<body>");
+				out.println("<div class=container>");
+				out.println("<div class=row>");
+				out.println("<table class=table>");
+				out.println("<tr>");
+				StringTokenizer st=
+						new StringTokenizer(vo.getImage(),",");
+				int i=0;
+				int count=st.countTokens();
+				while(st.hasMoreTokens())
+				{
+					if(i==7) break;
+					out.println("<td class=text-center>");
+					out.println("<img src=https://www.menupan.com"
+					       +st.nextToken()+" style=\"width:130px;height:100px\">");
+					out.println("</td>");
+					i++;
+				}
 			out.println("</tr>");
 			out.println("</table>");
 			
@@ -142,14 +150,107 @@ public class FoodDetail extends HttpServlet {
 			out.println("</td>");
 			out.println("</tr>");
 			out.println("</table>");
-			// => 지도
-			// => 댓글
+			// => 지도 
+			// => 댓글 
+			out.println("</div>");
+			out.println("<div class=row style=\"margin-top:20px\">");
+			// 화면 분할 
+			out.println("<div class=col-sm-8>");
+			out.println("<h3>댓글</h3>");
 			
-			out.println("</div>");		
-			out.println("</div>");		
-			out.println("</body>");		
-			out.println("</html>");		
-
+			// 댓글 출력 
+			ReplyDAO rdao=ReplyDAO.newInstance();
+			List<ReplyVO> list=rdao.replyListData(Integer.parseInt(fno));
+			
+			out.println("<table class=table>");
+			out.println("<tr>");
+			out.println("<td>");
+			for(ReplyVO rvo:list)
+			{
+				out.println("<table class=table>");
+				out.println("<tr>");
+				out.println("<td class=text-left>");
+				out.println("◑"+rvo.getName()+"&nbsp;(");
+				out.println(rvo.getDbday()+")");
+				out.println("</td>");	
+				out.println("<td class=text-center>");
+				if(rvo.getId().equals(id))
+				{
+					// <html> => 태그는 사용자 정의가 없다 속성은 사용자 정의가 가능
+					 out.println("<span class=\"btn btn-xs btn-success update\" data-rno="+rvo.getRno()+">수정</span>");
+					 out.println("<a href=ReplyInsert?fno="+fno+"&rno="+rvo.getRno()+" class=\"btn btn-xs btn-info\">삭제</a>");
+				}
+				out.println("</td>");	
+				out.println("</tr>");
+				out.println("<tr>");
+				out.println("<td colspan=2>");
+				out.println("<pre style=\"white-space:pre-wrap;background-color:white;border:none\">"+rvo.getMsg()+"</pre>");
+				out.println("</td>");
+				out.println("</tr>");
+				
+				out.println("<tr id=\"m"+rvo.getRno()+"\" class=ups style=\"display:none\">");
+				out.println("<td colspan=2>");
+				
+				out.println("<form method=post action=ReplyUpdate>");
+				out.println("<textarea rows=4 cols=45 name=msg style=\"float:left\" required>"+rvo.getMsg()+"</textarea>");
+				out.println("<input type=hidden name=fno value="+fno+">");
+				out.println("<input type=hidden name=rno value="+rvo.getRno()+">");
+				out.println("<input type=submit value=댓글수정 class=\"btn-primary\" style=\"float:left;width:80px;height:97px\">");
+				out.println("</form>");
+				
+				out.println("</td>");
+				out.println("</tr>");
+				
+				out.println("</table>");
+			}
+			out.println("</td>");		
+			out.println("</tr>");
+			out.println("</table>");
+			/*
+			 *   사용자가 전송한 값  "10"
+			 *   --------------
+			 *   1개 ==> String getParamter()
+			 *   여러개 => String[] getParamterValues()
+			 *   ------------ servlet / jsp / spring / spring-boot
+			 */
+			if(id!=null) // 로그인 된 경우에 사용이 가능
+			{
+			 out.println("<form method=post action=ReplyInsert>");
+			 out.println("<table class=table>");
+			 out.println("<tr>");
+			 out.println("<td>");
+			 out.println("<textarea rows=4 cols=58 name=msg style=\"float:left\" required></textarea>");
+			 out.println("<input type=hidden name=fno value="+fno+">");
+			 out.println("<input type=submit value=댓글쓰기 class=\"btn-primary\" style=\"float:left;width:80px;height:97px\">");
+			 out.println("</td>");		
+			 out.println("</tr>");
+			 out.println("</table>");
+			 out.println("</form>");
+			}
+			out.println("</div>");
+			out.println("<div class=col-sm-4>");
+			out.println("<h3>인기맛집</h3>");
+			List<FoodVO> fList=dao.foodHitTop10();
+			out.println("<table class=\"table table-striped\">");
+			out.println("<tr>");
+			out.println("<th class=text-center></th>");
+			out.println("<th class=text-center>업체명</th>");
+			out.println("<th class=text-center>조회수</th>");
+			out.println("</tr>");
+			for(FoodVO fvo:fList)
+			{
+				out.println("<tr>");
+				out.println("<td class=text-center><img src="+fvo.getPoster()+" width=30 height=30></td>");
+				out.println("<td>"+fvo.getName()+"</td>");
+				out.println("<td class=text-center>"+fvo.getHit()+"</td>");
+				out.println("</tr>");
+			}
+			out.println("</table>");
+			out.println("</div>");
+			out.println("</div>");
+			out.println("</div>");
+			out.println("</body>");
+			out.println("</html>");
 	}
 
 }

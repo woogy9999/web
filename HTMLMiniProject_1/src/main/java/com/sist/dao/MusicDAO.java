@@ -310,5 +310,39 @@ public class MusicDAO {
 		return total;
 		
 	}
-	
+	public List<MusicVO> MusicHitTop10(){
+		
+		List<MusicVO> list=new ArrayList<MusicVO>();
+		
+		try {
+			
+			getConnection();
+			String sql="SELECT mno,title,poster,hit,rownum "
+					+ "FROM (SELECT mno,title,poster,hit "
+					+ "FROM food_menupan ORDER BY hit DESC) "
+					+ "WHERE rownum<=10";
+			
+			ps=conn.prepareStatement(sql);
+			ResultSet rs=ps.executeQuery();
+			
+			while(rs.next()) {
+				MusicVO vo=new MusicVO();
+				vo.setMno(rs.getInt(1));
+				vo.setTitle(rs.getString(2));
+				vo.setPoster("https:"+rs.getString(3));
+				vo.setHit(rs.getInt(4));
+				list.add(vo);
+				
+			}
+			rs.close();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+			disConnection();
+		}
+		
+		return list;
+		
+	}
 }

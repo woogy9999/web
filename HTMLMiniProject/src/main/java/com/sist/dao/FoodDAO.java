@@ -327,7 +327,7 @@ public class FoodDAO {
 		}
 		return list;
 	}
-	public int foodFindTotalpage(String col,String fd) {
+	public int foodFindTotalPage(String col,String fd) {
 		int total=0;
 		try {
 			getConnection();
@@ -401,5 +401,40 @@ public class FoodDAO {
 			disConnection();
 		}
 		return vo;
+	}
+	public List<FoodVO> foodHitTop10(){
+		
+		List<FoodVO> list=new ArrayList<FoodVO>();
+		
+		try {
+			
+			getConnection();
+			String sql="SELECT fno,name,poster,hit,rownum "
+					+ "FROM (SELECT fno,name,poster,hit "
+					+ "FROM food_menupan ORDER BY hit DESC) "
+					+ "WHERE rownum<=10";
+			
+			ps=conn.prepareStatement(sql);
+			ResultSet rs=ps.executeQuery();
+			
+			while(rs.next()) {
+				FoodVO vo=new FoodVO();
+				vo.setFno(rs.getInt(1));
+				vo.setName(rs.getString(2));
+				vo.setPoster("https://www.menupan.com"+rs.getString(3));
+				vo.setHit(rs.getInt(4));
+				list.add(vo);
+				
+			}
+			rs.close();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+			disConnection();
+		}
+		
+		return list;
+		
 	}
 }
