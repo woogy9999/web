@@ -95,12 +95,12 @@ public class ReplyDAO {
 		}
 	}
 
-	public List<ReplyVO> replyListData(int fno) {
+	public List<ReplyVO> replyListData(int mno) {
 		List<ReplyVO> list = new ArrayList<ReplyVO>();
 		try {
 			getConnection();
 			String sql = "SELECT rno,fno,id,name,msg," + "TO_CHAR(regdate,'YYYY-MM-DD HH24:MI:SS') " + "FROM reply "
-					+ "WHERE fno=" + fno + " ORDER BY rno DESC";
+					+ "WHERE fno=" + mno + " ORDER BY rno DESC";
 			ps = conn.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {

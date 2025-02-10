@@ -244,12 +244,13 @@ public class MusicDAO {
 	public List<MusicVO> musicFind(int page, String col, String fd) {
 		List<MusicVO> list = new ArrayList<MusicVO>();
 
-		
+		System.out.println("page"+page+"col"+col+"fd"+fd);
+
 		try {
 			getConnection();
-			String sql="SELECT mno,cno,idcrement,hit,title,singer,album,poster,state,key,num "
-					+ "FROM (SELECT mno,cno,idcrement,hit,title,singer,album,poster,state,key,row as num "
-					+ "FROM (SELECT mno,cno,idcrement,hit,title,singer,album,poster,state,key "
+			String sql="SELECT mno,cno,title,singer,album,poster,num "
+					+ "FROM (SELECT mno,cno,title,singer,album,poster,rownum as num "
+					+ "FROM (SELECT mno,cno,title,singer,album,poster "
 					+ "FROM genie_music " 
 					+ "WHERE "+col+" LIKE '%'||?||'%')) "
 					+ "WHERE num BETWEEN ? AND ?";
@@ -268,15 +269,11 @@ public class MusicDAO {
 			while(rs.next()) {
 				MusicVO vo=new MusicVO();
 				vo.setMno(rs.getInt(1));
-				vo.setCno(rs.getInt("cno"));
-				vo.setIdcrement(rs.getInt("idcrement"));
-				vo.setHit(rs.getInt("hit"));
-				vo.setTitle(rs.getString("title"));
-				vo.setSinger(rs.getString("singer"));
-				vo.setAlbum(rs.getString("album"));
-				vo.setPoster("https:"+rs.getString("poster"));
-				vo.setState(rs.getString("state"));
-				vo.setKey(rs.getString("key"));
+				vo.setCno(rs.getInt(2));
+				vo.setTitle(rs.getString(3));
+				vo.setSinger(rs.getString(4));
+				vo.setAlbum(rs.getString(5));
+				vo.setPoster("https:"+rs.getString(6));
 				list.add(vo);
 				
 			}
@@ -289,6 +286,60 @@ public class MusicDAO {
 		}
 		return list;
 	}
+	// 로그인 처리
+		public MemberVO memberLogin(String id,String pwd) {
+			MemberVO vo=new MemberVO();
+			try {
+				getConnection();
+				String sql="SELECT COUNT(*) FROM member "
+						+ "WHERE id=?";
+				
+				ps=conn.prepareStatement(sql);
+
+				ps.setString(1, id);
+				
+				ResultSet rs=ps.executeQuery();
+				
+				rs.next();
+				int count=rs.getInt(1);
+				rs.close();
+				
+				if(count==0) {
+					
+					vo.setMsg("NOID");
+					
+				}else {
+					sql="SELECT id,name,sex,pwd "
+							+ "FROM member "
+							+ "WHERE id=?";
+					ps=conn.prepareStatement(sql);
+					ps.setString(1, id);
+					rs=ps.executeQuery();
+					rs.next();
+					
+					
+					vo.setId(rs.getString(1));
+					vo.setName(rs.getString(2));
+					vo.setSex(rs.getString(3));
+					String db_pwd=rs.getString(4);
+					if(db_pwd.equals(pwd)) {
+						
+						vo.setMsg("OK");
+						
+						
+					}else {
+						vo.setMsg("NOPWD");
+					}
+					rs.close();
+				}
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}finally {
+				disConnection();
+			}
+			return vo;
+		}
 	public int musicFindTotalpage(String col,String fd) {
 		int total=0;
 		try {
@@ -319,7 +370,7 @@ public class MusicDAO {
 			getConnection();
 			String sql="SELECT mno,title,poster,hit,rownum "
 					+ "FROM (SELECT mno,title,poster,hit "
-					+ "FROM food_menupan ORDER BY hit DESC) "
+					+ "FROM genie_music ORDER BY hit DESC) "
 					+ "WHERE rownum<=10";
 			
 			ps=conn.prepareStatement(sql);

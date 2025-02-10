@@ -287,7 +287,6 @@ public class FoodDAO {
 	public List<FoodVO> foodFind(int page,String col,String fd){
 		
 		List<FoodVO> list=new ArrayList<FoodVO>();
-		
 		try {
 			getConnection();
 			String sql="SELECT fno,name,poster,address,type,num "
