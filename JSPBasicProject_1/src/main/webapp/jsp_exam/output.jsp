@@ -26,7 +26,7 @@ String phone = request.getParameter("phone");
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
+<body> 
  아이디:<%= vo.getId() %><br>
  이름:<%= vo.getName() %><br>
  성별:<%=vo.getSex()	 %><br>
