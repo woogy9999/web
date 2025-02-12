@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="download.jsp?fn=m1.jpg">다운로드</a>
+	<h1>
+		main jsp
+		</h3>
 </body>
 </html>

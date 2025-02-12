@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%--
+	pageEncoding="UTF-8"%>
+<%--
     
     	내부객체 , 내장객체, 기본객체
     	 public void _jspService(HttpServletRequest request,HttpServletResponse response)
@@ -69,7 +69,7 @@
     		9. exception
     		
      --%>
-     
+
 <!DOCTYPE html>
 <html>
 <head>
