@@ -24,7 +24,7 @@
     	 vo.setFilesize(0);
      }
      else // 업로드 된 상태 
-     {
+     {  
     	 String uploadDir="c:\\upload";
     	 File file=new File(uploadDir,fileName);
     	 // 오라클 => 파일업로드 
