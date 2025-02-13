@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
- <h1>error발생</h1>
+<h1>b.jsp</h1>
+<h1>ID:<%=request.getParameter("id") %></h1>
 </body>
 </html>
