@@ -53,10 +53,8 @@ public class FoodDAO {
 
 		try {
 			getConnection();
-			String sql = "SELECT fno,name,poster,num " 
-					+ "FROM (SELECT fno,name,poster,rownum as num "
-					+ "FROM (SELECT /*+ INDEX_ASC(food_menupan fm_fno_pk)*/fno,name,poster " 
-					+ "FROM food_menupan))"
+			String sql = "SELECT fno,name,poster,num " + "FROM (SELECT fno,name,poster,rownum as num "
+					+ "FROM (SELECT /*+ INDEX_ASC(food_menupan fm_fno_pk)*/fno,name,poster " + "FROM food_menupan))"
 					+ "WHERE num BETWEEN ? AND ?";
 
 			ps = conn.prepareStatement(sql);
@@ -71,7 +69,7 @@ public class FoodDAO {
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				FoodVO vo = new FoodVO();
-				vo.setFno(rs.getInt(1));				
+				vo.setFno(rs.getInt(1));
 				vo.setName(rs.getString(2));
 				vo.setPoster("https://www.menupan.com" + rs.getString(3));
 				list.add(vo);
@@ -110,30 +108,26 @@ public class FoodDAO {
 
 		return total;
 	}
+
 	// 상세보기
 	public FoodVO foodDetailData(int fno) {
-		FoodVO vo=new FoodVO();
-		
+		FoodVO vo = new FoodVO();
+
 		try {
 			getConnection();
-			String sql="UPDATE food_menupan SET "
-					+ "hit=hit+1 "
-					+ "WHERE fno="+fno;
-			
-			ps=conn.prepareStatement(sql);
+			String sql = "UPDATE food_menupan SET " + "hit=hit+1 " + "WHERE fno=" + fno;
+
+			ps = conn.prepareStatement(sql);
 			ps.executeUpdate();
-			
-			
-			sql="SELECT name,type,phone,address,theme,poster, "
-					+ "image,time,parking,content,price,score,hit "
-					+ "FROM food_menupan "
-					+ "WHERE fno="+fno;
-			
-			ps=conn.prepareStatement(sql);
-			ResultSet rs=ps.executeQuery();
-			
+
+			sql = "SELECT name,type,phone,address,theme,poster, " + "image,time,parking,content,price,score,hit "
+					+ "FROM food_menupan " + "WHERE fno=" + fno;
+
+			ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+
 			rs.next();
-			
+
 			vo.setName(rs.getString("name"));
 			vo.setType(rs.getString("type"));
 			vo.setPhone(rs.getString("phone"));
@@ -147,88 +141,79 @@ public class FoodDAO {
 			vo.setPrice(rs.getString("price"));
 			vo.setScore(rs.getDouble("score"));
 			vo.setHit(rs.getInt("hit"));
-			
-		
+
 			rs.close();
-			
+
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-		}finally {
+		} finally {
 			disConnection();
 		}
-		
+
 		return vo;
-		
-		
+
 	}
-	//cookie 데이터
+
+	// cookie 데이터
 	public FoodVO foodCookieData(int fno) {
-		FoodVO vo=new FoodVO();
+		FoodVO vo = new FoodVO();
 		try {
 			getConnection();
-			String sql="SELECT fno,name,poster "
-					+ "FROM food_menupan "
-					+ "WHERE fno="+fno;
-			
-			ps=conn.prepareStatement(sql);
-			ResultSet rs=ps.executeQuery();
+			String sql = "SELECT fno,name,poster " + "FROM food_menupan " + "WHERE fno=" + fno;
+
+			ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
 			rs.next();
 			vo.setFno(rs.getInt(1));
 			vo.setName(rs.getString(2));
-			vo.setPoster("https://www.menupan.com"+rs.getString(3));
+			vo.setPoster("https://www.menupan.com" + rs.getString(3));
 			rs.close();
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-		}finally {
+		} finally {
 			disConnection();
 		}
 		return vo;
-		
+
 	}
+
 	// 음식 종류별 검색
-	public List<FoodVO> foodTypeFind(int page,String type){
-		List<FoodVO> list=new ArrayList<FoodVO>();
-		
+	public List<FoodVO> foodTypeFind(int page, String type) {
+		List<FoodVO> list = new ArrayList<FoodVO>();
+
 		try {
 			getConnection();
-			String sql="";
+			String sql = "";
 			int rowSize = 12;
 			int start = (rowSize * page) - (rowSize - 1);
 			int end = rowSize * page;
-			if(!type.equals("기타")) {
-				
-				sql="SELECT fno,name,poster,num "
-						+ "FROM (SELECT fno,name,poster,rownum as num "
-						+ "FROM (SELECT fno,name,poster "
-						+ "FROM food_menupan "
-						+ "WHERE type LIKE '%'||?||'%')) "
+			if (!type.equals("기타")) {
+
+				sql = "SELECT fno,name,poster,num " + "FROM (SELECT fno,name,poster,rownum as num "
+						+ "FROM (SELECT fno,name,poster " + "FROM food_menupan " + "WHERE type LIKE '%'||?||'%')) "
 						+ "WHERE num BETWEEN ? AND ?";
-				
-					ps=conn.prepareStatement(sql);
-					ps.setString(1, type);
-					ps.setInt(2, start);
-					ps.setInt(3, end);
-				
-			}else {
-				sql="SELECT fno,name,poster,num "
-					+ "FROM (SELECT fno,name,poster,rownum as num "
-					+ "FROM (SELECT fno,name,poster "
-					+ "FROM food_menupan "
-					+ "WHERE NOT REGEXP_LIKE(type,'한식|양식|중식|일식|카페'))) "
-					+ "WHERE num BETWEEN ? AND ?";
-				
-					ps=conn.prepareStatement(sql);
-					ps.setInt(1, start);
-					ps.setInt(2, end);
+
+				ps = conn.prepareStatement(sql);
+				ps.setString(1, type);
+				ps.setInt(2, start);
+				ps.setInt(3, end);
+
+			} else {
+				sql = "SELECT fno,name,poster,num " + "FROM (SELECT fno,name,poster,rownum as num "
+						+ "FROM (SELECT fno,name,poster " + "FROM food_menupan "
+						+ "WHERE NOT REGEXP_LIKE(type,'한식|양식|중식|일식|카페'))) " + "WHERE num BETWEEN ? AND ?";
+
+				ps = conn.prepareStatement(sql);
+				ps.setInt(1, start);
+				ps.setInt(2, end);
 			}
-		
 
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				FoodVO vo = new FoodVO();
-				vo.setFno(rs.getInt(1));				
+				vo.setFno(rs.getInt(1));
 				vo.setName(rs.getString(2));
 				vo.setPoster("https://www.menupan.com" + rs.getString(3));
 				list.add(vo);
@@ -240,155 +225,143 @@ public class FoodDAO {
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-		}finally {
+		} finally {
 			disConnection();
 		}
-		
+
 		return list;
-		
+
 	}
-	
+
 	public int foodTypeTotalPage(String type) {
-		int total=0;
+		int total = 0;
 		try {
 			getConnection();
-			String sql="";
-			if(!type.equals("기타")) {
-				sql="SELECT CEIL(COUNT(*)/12.0) "
-						+ "FROM food_menupan "
-						+ "WHERE type LIKE '%'||?||'%'";
-				ps=conn.prepareStatement(sql);
+			String sql = "";
+			if (!type.equals("기타")) {
+				sql = "SELECT CEIL(COUNT(*)/12.0) " + "FROM food_menupan " + "WHERE type LIKE '%'||?||'%'";
+				ps = conn.prepareStatement(sql);
 				ps.setString(1, type);
-				
-			}else {
-				sql="SELECT CEIL(COUNT(*)/12.0) "
-						+ "FROM food_menupan "
+
+			} else {
+				sql = "SELECT CEIL(COUNT(*)/12.0) " + "FROM food_menupan "
 						+ "WHERE NOT REGEXP_LIKE(type,'한식|양식|중식|일식|카페')";
-				ps=conn.prepareStatement(sql);
-				
+				ps = conn.prepareStatement(sql);
+
 			}
-			ResultSet rs=ps.executeQuery();
+			ResultSet rs = ps.executeQuery();
 			rs.next();
-			
-			total=rs.getInt(1);
+
+			total = rs.getInt(1);
 			rs.close();
-			
+
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-		}
-		finally {
+		} finally {
 			disConnection();
 		}
-		
+
 		return total;
 	}
-	
-	public List<FoodVO> foodFind(int page,String col,String fd){
-		
-		List<FoodVO> list=new ArrayList<FoodVO>();
+
+	public List<FoodVO> foodFind(int page, String col, String fd) {
+
+		List<FoodVO> list = new ArrayList<FoodVO>();
 		try {
 			getConnection();
-			String sql="SELECT fno,name,poster,address,type,num "
+			String sql = "SELECT fno,name,poster,address,type,num "
 					+ "FROM (SELECT fno,name,poster,address,type,rownum as num "
-					+ "FROM (SELECT fno,name,poster,address,type "
-					+ "FROM food_menupan "
-					+ "WHERE "+col+" LIKE '%'||?||'%')) "
-					+ "WHERE num BETWEEN ? AND ?";
-			
-			ps=conn.prepareStatement(sql);
-			int rowSize=20;
-			int start=(rowSize*page)-(rowSize-1);
-			int end=rowSize*page;
-			
+					+ "FROM (SELECT fno,name,poster,address,type " + "FROM food_menupan " + "WHERE " + col
+					+ " LIKE '%'||?||'%')) " + "WHERE num BETWEEN ? AND ?";
+
+			ps = conn.prepareStatement(sql);
+			int rowSize = 20;
+			int start = (rowSize * page) - (rowSize - 1);
+			int end = rowSize * page;
+
 			ps.setString(1, fd);
 			ps.setInt(2, start);
 			ps.setInt(3, end);
-			
-			ResultSet rs=ps.executeQuery();
-			while(rs.next()) {
-				FoodVO vo=new FoodVO();
+
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				FoodVO vo = new FoodVO();
 				vo.setFno(rs.getInt(1));
 				vo.setName(rs.getString(2));
-				vo.setPoster("https://www.menupan.com"+rs.getString(3));
+				vo.setPoster("https://www.menupan.com" + rs.getString(3));
 				vo.setAddress(rs.getString(4));
 				vo.setType(rs.getString(5));
 				list.add(vo);
-				
-				
+
 			}
 			rs.close();
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-		}finally {
+		} finally {
 			disConnection();
 		}
 		return list;
 	}
-	public int foodFindTotalPage(String col,String fd) {
-		int total=0;
+
+	public int foodFindTotalPage(String col, String fd) {
+		int total = 0;
 		try {
 			getConnection();
-			String sql="SELECT CEIL(COUNT(*)/20.0) "
-					+ "FROM food_menupan "
-					+ "WHERE "+col+" LIKE '%'||?||'%'";
-			ps=conn.prepareStatement(sql);
+			String sql = "SELECT CEIL(COUNT(*)/20.0) " + "FROM food_menupan " + "WHERE " + col + " LIKE '%'||?||'%'";
+			ps = conn.prepareStatement(sql);
 			ps.setString(1, fd);
-			ResultSet rs=ps.executeQuery();
+			ResultSet rs = ps.executeQuery();
 			rs.next();
-			total=rs.getInt(1);
+			total = rs.getInt(1);
 			rs.close();
 		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			disConnection();
 		}
 		return total;
-		
+
 	}
+
 	// 로그인 처리
-	public MemberVO memberLogin(String id,String pwd) {
-		MemberVO vo=new MemberVO();
+	public MemberVO memberLogin(String id, String pwd) {
+		MemberVO vo = new MemberVO();
 		try {
 			getConnection();
-			String sql="SELECT COUNT(*) FROM member "
-					+ "WHERE id=?";
-			
-			ps=conn.prepareStatement(sql);
+			String sql = "SELECT COUNT(*) FROM member " + "WHERE id=?";
+
+			ps = conn.prepareStatement(sql);
 
 			ps.setString(1, id);
-			
-			ResultSet rs=ps.executeQuery();
-			
+
+			ResultSet rs = ps.executeQuery();
+
 			rs.next();
-			int count=rs.getInt(1);
+			int count = rs.getInt(1);
 			rs.close();
-			
-			if(count==0) {
-				
+
+			if (count == 0) {
+
 				vo.setMsg("NOID");
-				
-			}else {
-				sql="SELECT id,name,sex,pwd "
-						+ "FROM member "
-						+ "WHERE id=?";
-				ps=conn.prepareStatement(sql);
+
+			} else {
+				sql = "SELECT id,name,sex,pwd " + "FROM member " + "WHERE id=?";
+				ps = conn.prepareStatement(sql);
 				ps.setString(1, id);
-				rs=ps.executeQuery();
+				rs = ps.executeQuery();
 				rs.next();
-				
-				
+
 				vo.setId(rs.getString(1));
 				vo.setName(rs.getString(2));
 				vo.setSex(rs.getString(3));
-				String db_pwd=rs.getString(4);
-				if(db_pwd.equals(pwd)) {
-					
+				String db_pwd = rs.getString(4);
+				if (db_pwd.equals(pwd)) {
+
 					vo.setMsg("OK");
-					
-					
-				}else {
+
+				} else {
 					vo.setMsg("NOPWD");
 				}
 				rs.close();
@@ -396,44 +369,43 @@ public class FoodDAO {
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-		}finally {
+		} finally {
 			disConnection();
 		}
 		return vo;
 	}
-	public List<FoodVO> foodHitTop10(){
-		
-		List<FoodVO> list=new ArrayList<FoodVO>();
-		
+
+	public List<FoodVO> foodHitTop10() {
+
+		List<FoodVO> list = new ArrayList<FoodVO>();
+
 		try {
-			
+
 			getConnection();
-			String sql="SELECT fno,name,poster,hit,rownum "
-					+ "FROM (SELECT fno,name,poster,hit "
-					+ "FROM food_menupan ORDER BY hit DESC) "
-					+ "WHERE rownum<=10";
-			
-			ps=conn.prepareStatement(sql);
-			ResultSet rs=ps.executeQuery();
-			
-			while(rs.next()) {
-				FoodVO vo=new FoodVO();
+			String sql = "SELECT fno,name,poster,hit,rownum " + "FROM (SELECT fno,name,poster,hit "
+					+ "FROM food_menupan ORDER BY hit DESC) " + "WHERE rownum<=10";
+
+			ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				FoodVO vo = new FoodVO();
 				vo.setFno(rs.getInt(1));
 				vo.setName(rs.getString(2));
-				vo.setPoster("https://www.menupan.com"+rs.getString(3));
+				vo.setPoster("https://www.menupan.com" + rs.getString(3));
 				vo.setHit(rs.getInt(4));
 				list.add(vo);
-				
+
 			}
 			rs.close();
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-		}finally {
+		} finally {
 			disConnection();
 		}
-		
+
 		return list;
-		
+
 	}
 }

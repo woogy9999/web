@@ -64,13 +64,13 @@ public class MusicTypeFind extends HttpServlet {
 		out.println("<body>");
 		out.println("<div class=container>");
 		out.println("<div class=\"row text-center\">");
-		out.println("<a href=MusicTypeFind?cno=1 class=\"btn btn-sm btn-danger\">Top50</a>");
-		out.println("<a href=MusicTypeFind?cno=2 class=\"btn btn-sm btn-success\">가요</a>");
-		out.println("<a href=MusicTypeFind?cno=3 class=\"btn btn-sm btn-info\">POP</a>");
-		out.println("<a href=MusicTypeFind?cno=4 class=\"btn btn-sm btn-primary\">OST</a>");
-		out.println("<a href=MusicTypeFind?cno=5 class=\"btn btn-sm btn-warning\">트롯</a>");
-		out.println("<a href=MusicTypeFind?cno=6 class=\"btn btn-sm btn-default\">JAZZ</a>");
-		out.println("<a href=MusicTypeFind?cno=7 class=\"btn btn-sm btn-default\">CLASSIC</a>");
+		out.println("<a href=MainServlet?mode=7&cno=1 class=\"btn btn-sm btn-danger\">Top50</a>");
+		out.println("<a href=MainServlet?mode=7&cno=2 class=\"btn btn-sm btn-success\">가요</a>");
+		out.println("<a href=MainServlet?mode=7&cno=3 class=\"btn btn-sm btn-info\">POP</a>");
+		out.println("<a href=MainServlet?mode=7&cno=4 class=\"btn btn-sm btn-primary\">OST</a>");
+		out.println("<a href=MainServlet?mode=7&cno=5 class=\"btn btn-sm btn-warning\">트롯</a>");
+		out.println("<a href=MainServlet?mode=7&cno=6 class=\"btn btn-sm btn-default\">JAZZ</a>");
+		out.println("<a href=MainServlet?mode=7&cno=7 class=\"btn btn-sm btn-default\">CLASSIC</a>");
 
 		out.println("</div>");
 		out.println("<div class=row style=\'margin-top:20px\'>");
