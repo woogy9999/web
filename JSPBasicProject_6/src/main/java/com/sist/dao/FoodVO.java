@@ -17,6 +17,7 @@ package com.sist.dao;
  HIT            NUMBER
  PRICE          VARCHAR2(30)
  */
+
 public class FoodVO {
 	private int fno,hit;
 	private double score;

@@ -141,10 +141,23 @@
       
       
       <Context docBase="JSPBasicProject_6" path="/JSPBasicProject_6" reloadable="true" source="org.eclipse.jst.jee.server:JSPBasicProject_6">
-      <Resource auth="Container" driverClassName="oracle.jdbc.OracleDriver" logAbandoned="true" maxActive="10" maxIdle="8" maxOpenPreparedStatements="100" maxWait="-1" minEvictableIdleTimeMillis="60000" name="jdbc/oracle" password="happy" removeAbandoned="true" removeAbandonedTimeout="60" testOnBorrow="true" timeBetweenEvictionRunsMillis="5000" type="javax.sql.DataSource" url="jdbc:oracle:thin:@localhost:1521:XE" username="hr" validationInterval="30000" validationQuery="SELECT 1 FROM DUAL"/>
+      
+
+ <Resource 
+		    driverClassName="oracle.jdbc.OracleDriver"
+		    url="jdbc:oracle:thin:@localhost:1521:XE"
+		    username="hr"
+		    password="happy"
+		    maxActive="10"
+		    maxIdle="8"
+		    maxWait="-1"
+		    auth="Container"
+		    type="javax.sql.DataSource"
+		    name="jdbc/oracle"
+/>
       
       </Context>
-      <Context docBase="JSPFrontProject_1" path="/JSPFrontProject_1" reloadable="true" source="org.eclipse.jst.jee.server:JSPFrontProject_1"/></Host>
+      </Host>
     
     
     
