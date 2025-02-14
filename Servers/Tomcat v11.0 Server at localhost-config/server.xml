@@ -143,21 +143,14 @@
       <Context docBase="JSPBasicProject_6" path="/JSPBasicProject_6" reloadable="true" source="org.eclipse.jst.jee.server:JSPBasicProject_6">
       
 
- <Resource 
-		    driverClassName="oracle.jdbc.OracleDriver"
-		    url="jdbc:oracle:thin:@localhost:1521:XE"
-		    username="hr"
-		    password="happy"
-		    maxActive="10"
-		    maxIdle="8"
-		    maxWait="-1"
-		    auth="Container"
-		    type="javax.sql.DataSource"
-		    name="jdbc/oracle"
-/>
+ 		<Resource auth="Container" driverClassName="oracle.jdbc.OracleDriver" maxActive="10" maxIdle="8" maxWait="-1" name="jdbc/oracle" password="happy" type="javax.sql.DataSource" url="jdbc:oracle:thin:@localhost:1521:XE" username="hr"/>
       
       </Context>
-      </Host>
+      
+      <Context docBase="JSPBasicProject_7" path="/JSPBasicProject_7" reloadable="true" source="org.eclipse.jst.jee.server:JSPBasicProject_7">
+      	<Resource auth="Container" driverClassName="oracle.jdbc.OracleDriver" maxActive="10" maxIdle="8" maxWait="-1" name="jdbc/oracle" password="happy" type="javax.sql.DataSource" url="jdbc:oracle:thin:@localhost:1521:XE" username="hr"/>
+      </Context>
+      <Context docBase="JSPBasicProject_8" path="/JSPBasicProject_8" reloadable="true" source="org.eclipse.jst.jee.server:JSPBasicProject_8"/></Host>
     
     
     
