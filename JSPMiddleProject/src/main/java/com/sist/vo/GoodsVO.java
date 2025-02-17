@@ -93,7 +93,7 @@ public class GoodsVO {
 	public void setGoods_delivert(String goods_delivert) {
 		this.goods_delivert = goods_delivert;
 	}
-
+ 
 	public String getGoods_poster() {
 		return goods_poster;
 	}
