@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  Connection:getConnection/disConnection : 공통-->
+<!DOCTYPE configuration
+ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-config.dtd">
+ <configuration>
+ 	<!-- 
+ 	(properties?, settings?, typeAliases?, typeHandlers?, 
+ objectFactory?, objectWrapperFactory?, reflectorFactory?, plugins?, 
+ environments?, databaseIdProvider?, mappers?) -->
+
+ <!-- VO등록 -->
+ <typeAliases>
+ 	<typeAlias type="com.sist.vo.GoodsVO" alias="GoodsVO"/>
+ </typeAliases>
+<!-- 오라클 연동 : 오라클 정보 -->
+<environments default="development">
+	<environment id="development">
+		<transactionManager type="JDBC"/> <!-- COMMIT/ROLLBACK -->
+		<dataSource type="POOLED">
+		<!-- UNPOOLED : JDBC
+			 POOLED : DBCP => maxActive(8) maxIdle(8)
+		 -->
+		 <property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
+		 <property name="url" value="jdbc:oracle:thin:@localhost:1521:XE"/>
+		 <property name="username" value="hr"/>
+		 <property name="password" value="happy"/>
+		</dataSource>
+		
+	</environment>
+</environments>
+
+<!-- SQL문장 읽어 온다 -->
+	<mappers>
+		<!-- include -->
+		<mapper resource="com/sist/dao/goods_mapper.xml"/>
+	</mappers> 
+ </configuration>

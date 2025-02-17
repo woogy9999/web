@@ -3,7 +3,6 @@
 <% 
 	String jsp="home.jsp";
 
-	jsp="header.jsp";
 	
 	//RequestDispatcher rd=request.getRequestDispatcher("home.jsp");
 	//rd.include(request, response);
