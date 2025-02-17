@@ -2,3 +2,51 @@
 <!DOCTYPE mapper
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.sist.dao.food-mapper">
+ 	<!-- id: 구분자 (중복이 없다)
+ 		 HashMap에 첨부
+ 		 map.put("id명","SELECT~")
+ 		 
+ 		 selectList(id명)
+ 		 
+ 		 <delete id="">
+ 		  begin
+ 		  	delete from A
+ 		  	delete from B
+ 		  	delete from C
+ 		  end
+ 		 </delete 
+ 	 -->
+ 	 <sql id="where-fno">
+ 	 	WHERE fno=#{fno}
+ 	 </sql>
+ 	 
+ 	<select id="foodListData" resultSets="FoodVO">
+ 		SELECT fno,name,poster,num
+ 		FROM (SELECT fno,name,poster,rownum as num
+ 		FROM (SELECT fno,name,poster
+ 		FROM food_menupan ORDER BY fno ASC))
+ 		WHERE num BETWEEN #{start} AND #{end}
+ 	</select>
+ 	<!--  
+ 	
+ 	private int fno,hit;
+	private double score;
+	private String name,type,phone,address,theme,poster,image,time,parking,content,price;
+	 -->
+ 	<select id="foodTotalPage" resultType="int">
+ 		SELECT CEIL(COUNT(*)/12.0) FROM food_menupan
+ 	</select>
+	<update id="hitIncrement" parameterType="int">
+		UPDATE food_menupan SET 
+		hit=hit+1 
+		<include refid="where-fno"/>
+	
+	</update>
+ 	<select id="foodDetailData" resultType="FoodVO" parameterType="int">
+ 	 SELECT name,type,phone,address,theme,poster,image,time,parking,content,price,score,hit 
+	 FROM food_menupan 
+	<include refid="where-fno"/>
+ 	
+ 	</select>
+ </mapper>
