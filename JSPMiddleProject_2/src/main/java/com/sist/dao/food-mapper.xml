@@ -21,7 +21,7 @@
  	 	WHERE fno=#{fno}
  	 </sql>
  	 
- 	<select id="foodListData" resultSets="FoodVO">
+ 	<select id="foodListData" resultType="FoodVO">
  		SELECT fno,name,poster,num
  		FROM (SELECT fno,name,poster,rownum as num
  		FROM (SELECT fno,name,poster
@@ -34,7 +34,7 @@
 	private double score;
 	private String name,type,phone,address,theme,poster,image,time,parking,content,price;
 	 -->
- 	<select id="foodTotalPage" resultType="int">
+ 	<select id="foodTotalPaga" resultType="int">
  		SELECT CEIL(COUNT(*)/12.0) FROM food_menupan
  	</select>
 	<update id="hitIncrement" parameterType="int">

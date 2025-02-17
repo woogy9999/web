@@ -23,6 +23,7 @@ public class FoodDAO {
 			ssf=new SqlSessionFactoryBuilder().build(reder);
 		} catch (Exception e) {
 			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 	
@@ -45,7 +46,15 @@ public class FoodDAO {
  	<select id="foodTotalPage" resultType="int">
  		SELECT CEIL(COUNT(*)/12.0) FROM food_menupan
  	</select>
- 	
+ 	*/
+	public static List<FoodVO> foodListData(Map map){
+		return ssf.openSession().selectList("foodListData",map);
+		
+	}
+	public static int foodTotalPage() {
+		return ssf.openSession().selectOne("foodTotalPaga");
+	}
+	/*
  	<update id="hitIncrement" parameterType="int">
 		UPDATE food_menupan SET 
 		hit=hit+1 
