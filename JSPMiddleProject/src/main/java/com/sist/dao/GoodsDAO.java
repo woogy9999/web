@@ -19,10 +19,17 @@ public class GoodsDAO {
 		try {
 			Reader reader = Resources.getResourceAsReader("Config.xml");
 			
-			System.out.println("reader"+reader);
-			ssf = new SqlSessionFactoryBuilder().build(reader);
-
-			System.out.println("ssf"+ssf);
+			try {
+			    ssf = new SqlSessionFactoryBuilder().build(reader);
+			    if (ssf == null) {
+			        System.out.println("SqlSessionFactory is null");
+			    } else {
+			        System.out.println("SqlSessionFactory is created successfully");
+			    }
+			} catch (Exception e) {
+			    e.printStackTrace();  // 예외 발생 시 처리
+			    System.out.println("Failed to create SqlSessionFactory");
+			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}

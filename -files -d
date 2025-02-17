@@ -1,0 +1,271 @@
+[33mcommit 9bdbd8b20bb4d0ff588364e5c20cafcb800a78bd[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Merge: 2d98a07 a00333f
+Author: microsoft <microsoft@sist>
+Date:   Mon Feb 17 13:40:43 2025 +0900
+
+    Merge branch 'master' of https://github.com/woogy9999/web.git
+
+[33mcommit 2d98a07f883714a607c80f75177f7614b00f248a[m
+Author: microsoft <microsoft@sist>
+Date:   Mon Feb 17 13:24:16 2025 +0900
+
+    1111
+
+[33mcommit 5454518e18b4281d213581335ea8aacfd64b3116[m
+Author: microsoft <microsoft@sist>
+Date:   Mon Feb 17 09:02:42 2025 +0900
+
+    1111
+
+[33mcommit 52c41d67ec2896f05515748853a4c1ef5e7f14bd[m
+Author: microsoft <microsoft@sist>
+Date:   Fri Feb 14 12:15:19 2025 +0900
+
+    1111
+
+[33mcommit cc2d670bf2622925a679ace77c1785a4fec6d8d2[m
+Author: microsoft <microsoft@sist>
+Date:   Thu Feb 13 17:48:30 2025 +0900
+
+    1122
+
+[33mcommit 37bb227053628242f65e29ac7c1f2a5b54c813ed[m
+Author: microsoft <microsoft@sist>
+Date:   Thu Feb 13 12:50:51 2025 +0900
+
+    1111
+
+[33mcommit 5551bac13f3dd92c598079c10764eabcbb3f0eac[m
+Author: microsoft <microsoft@sist>
+Date:   Thu Feb 13 09:11:41 2025 +0900
+
+    1111
+
+[33mcommit 731b88163d4b2ea0832b8e9fcbfd00466e823cef[m
+Author: microsoft <microsoft@sist>
+Date:   Wed Feb 12 17:56:22 2025 +0900
+
+    jsp
+
+[33mcommit a00333f864d2d7b4a67a6dea1a596ced61ca31cb[m
+Author: woogy9999 <gusdnrdkshf@gmail.com>
+Date:   Wed Feb 12 14:58:34 2025 +0900
+
+    Delete Servers directory
+
+[33mcommit 5fc51cbc3475a3e74ddeffc1089f3239902016bf[m
+Author: microsoft <microsoft@sist>
+Date:   Wed Feb 12 14:48:22 2025 +0900
+
+    1
+
+[33mcommit 775faf9cb87c65ba10a49fe92b3d1993ac1e152c[m
+Author: microsoft <microsoft@sist>
+Date:   Wed Feb 12 14:48:02 2025 +0900
+
+    1
+
+[33mcommit 623e648cfd86a61cb52dc124289ba4d2595d3f3b[m
+Merge: 834c645 9ae6ea2
+Author: microsoft <microsoft@sist>
+Date:   Wed Feb 12 14:47:11 2025 +0900
+
+    Merge branch 'master' of https://github.com/woogy9999/web.git
+
+[33mcommit 834c6452e8a180f9f9c5a0e68c71b256fc6948b9[m
+Author: microsoft <microsoft@sist>
+Date:   Wed Feb 12 14:46:23 2025 +0900
+
+    1
+
+[33mcommit a20da1024cfd3c695f63ee77a40087e31a9eb3ef[m
+Author: microsoft <microsoft@sist>
+Date:   Wed Feb 12 14:45:37 2025 +0900
+
+    1
+
+[33mcommit efe5ea8bf26d60b40245ebc344f410713680d9b2[m
+Author: microsoft <microsoft@sist>
+Date:   Wed Feb 12 14:45:04 2025 +0900
+
+    1
+
+[33mcommit 9ae6ea2a3e5ff452d627c0beb91ac051335ec71f[m
+Author: woogy9999 <gusdnrdkshf@gmail.com>
+Date:   Wed Feb 12 14:37:08 2025 +0900
+
+    Delete .project
+
+[33mcommit 8aa67ddc6cd244f9ac261c8d057f3e755e43d2ca[m
+Author: microsoft <microsoft@sist>
+Date:   Wed Feb 12 14:30:42 2025 +0900
+
+    123
+
+[33mcommit 8b14e16f2b11dc867de6be21dc36bfd6c7ea8f60[m
+Author: microsoft <microsoft@sist>
+Date:   Wed Feb 12 13:41:39 2025 +0900
+
+    1111
+
+[33mcommit 31ceaa541ae8a655f26e8d7e76005a6b240f3123[m
+Author: microsoft <microsoft@sist>
+Date:   Wed Feb 12 12:18:38 2025 +0900
+
+    1111
+
+[33mcommit c70b6660e8934aedb0666f68353d38e058f31baf[m
+Author: microsoft <microsoft@sist>
+Date:   Wed Feb 12 12:18:15 2025 +0900
+
+    1111
+
+[33mcommit 704faed430ef78f6ef3d8a8906abfd5eef01dd0b[m
+Author: microsoft <microsoft@sist>
+Date:   Tue Feb 11 16:38:50 2025 +0900
+
+    1111
+
+[33mcommit fe3b5ada98bf7134e658128024945808a6aea56f[m
+Author: microsoft <microsoft@sist>
+Date:   Tue Feb 11 15:04:42 2025 +0900
+
+    1111
+
+[33mcommit 11f7ea54a3896e0587148d9902d02f585aad006c[m
+Author: microsoft <microsoft@sist>
+Date:   Tue Feb 11 15:03:47 2025 +0900
+
+    1111
+
+[33mcommit ace2d04662048f433a251e83b9da4b80ca326808[m
+Author: microsoft <microsoft@sist>
+Date:   Tue Feb 11 09:01:40 2025 +0900
+
+    1111
+
+[33mcommit 5a50688617917d5774ca5b13d2228db198e8e484[m
+Author: microsoft <microsoft@sist>
+Date:   Mon Feb 10 17:40:51 2025 +0900
+
+    1111
+
+[33mcommit 99fcebb9147426f1b11e3e9527e2f60fe3f9cafb[m
+Author: microsoft <microsoft@sist>
+Date:   Mon Feb 10 09:57:49 2025 +0900
+
+    1111
+
+[33mcommit 20ed48fdc1f2b243cc0fe541c0ec3066ac308778[m
+Author: microsoft <microsoft@sist>
+Date:   Fri Feb 7 17:52:52 2025 +0900
+
+    1111
+
+[33mcommit 2f563830bb4108d26f7b2e56cbbbea8b99c7b931[m
+Author: microsoft <microsoft@sist>
+Date:   Thu Feb 6 17:34:44 2025 +0900
+
+    1111
+
+[33mcommit c464b018bd362659945e8b7b99bb632e71d65b59[m
+Author: microsoft <microsoft@sist>
+Date:   Thu Feb 6 09:00:15 2025 +0900
+
+    1111
+
+[33mcommit d8cb44597ff529abebdc1329f44b45eb4bcd63c8[m
+Author: microsoft <microsoft@sist>
+Date:   Wed Feb 5 17:51:27 2025 +0900
+
+    1111
+
+[33mcommit 91a479d71f93b0b2d50052314ea58aa3b7dd7ad1[m
+Author: microsoft <microsoft@sist>
+Date:   Wed Feb 5 09:03:43 2025 +0900
+
+    1111
+
+[33mcommit 105d54af14852d1ea83cb83ba095c77948d022e3[m
+Author: microsoft <microsoft@sist>
+Date:   Tue Feb 4 14:01:11 2025 +0900
+
+    1111
+
+[33mcommit 210f61e7fc07ec1a442234e627c175f7c4e08c73[m
+Author: microsoft <microsoft@sist>
+Date:   Mon Feb 3 17:56:37 2025 +0900
+
+    1111
+
+[33mcommit 9a754e30b51145ce22bbf79ba7e0459ef37e3e7b[m
+Author: microsoft <microsoft@sist>
+Date:   Mon Feb 3 12:45:14 2025 +0900
+
+    1111
+
+[33mcommit 034fe7cdab8a032f689593f3e9776529a884d30b[m
+Author: microsoft <microsoft@sist>
+Date:   Mon Feb 3 10:09:05 2025 +0900
+
+    1111
+
+[33mcommit 8424e8c89d399daf485105d204b99ea2e99a4afb[m
+Author: microsoft <microsoft@sist>
+Date:   Fri Jan 31 15:59:50 2025 +0900
+
+    1111
+
+[33mcommit a52922bf31ee16576f36d86b88e7483a19046d49[m
+Author: microsoft <microsoft@sist>
+Date:   Fri Jan 31 15:59:31 2025 +0900
+
+    1111
+
+[33mcommit 66e19130564b3679ad77793bc9034197eac69c7a[m
+Author: microsoft <microsoft@sist>
+Date:   Fri Jan 31 11:28:33 2025 +0900
+
+    1111
+
+[33mcommit a2ae9509c0531b49ef2b1fa43998d8b664c32e55[m
+Author: microsoft <microsoft@sist>
+Date:   Fri Jan 24 17:46:48 2025 +0900
+
+    1111
+
+[33mcommit 6ce630f38787c40d0200ddb612929f3107b489e3[m
+Author: microsoft <microsoft@sist>
+Date:   Fri Jan 24 16:52:22 2025 +0900
+
+    1111
+
+[33mcommit c4fe556159a321ee9a84ca7b6a9873dca4fe4845[m
+Author: microsoft <microsoft@sist>
+Date:   Fri Jan 24 16:26:14 2025 +0900
+
+    1111
+
+[33mcommit 1050c74b6cf215e80aacba6bacecbc834185260e[m
+Author: microsoft <microsoft@sist>
+Date:   Fri Jan 24 16:25:41 2025 +0900
+
+    gg
+
+[33mcommit 337e0c10a624fcc4f028bc8c9706e08e0b385e18[m
+Author: microsoft <microsoft@sist>
+Date:   Fri Jan 24 16:21:40 2025 +0900
+
+    1111
+
+[33mcommit ffa8d06edace52f57f396c21027db1d5f9110170[m
+Author: microsoft <microsoft@sist>
+Date:   Fri Jan 24 16:21:24 2025 +0900
+
+    1111
+
+[33mcommit bc4d0a1c26b6bf039c08c3b8b04befb83a728247[m
+Author: microsoft <microsoft@sist>
+Date:   Fri Jan 24 16:19:57 2025 +0900
+
+    1111
