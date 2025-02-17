@@ -35,7 +35,7 @@ public class FoodDAO {
 	  try
 	  {
 		  Context init=new InitialContext();
-		  Context c=(Context)init.lookup("java://comp/env");
+		  Context c=(Context)init.lookup("java:/comp/env");
 		  DataSource ds=(DataSource)c.lookup("jdbc/oracle");
 		  conn=ds.getConnection();
 	  }catch(Exception ex) {}
