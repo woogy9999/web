@@ -29,8 +29,8 @@ public class Controller extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		// TODO Auto-generated method stub
 		
-		try {
-			String xml_path="C:\\webDev\\webStudy\\JSPMiddleProject_4\\src\\main\\webapp\\WEB-INF\\application.xml";
+		try {				
+			String xml_path="C:\\webDev\\web\\JSPMiddleProject_4\\src\\main\\webapp\\WEB-INF\\application.xml";
 			DocumentBuilderFactory dbf=DocumentBuilderFactory.newInstance();
 			// 파서기 생성 => XML / WML / HDML / VML
 			DocumentBuilder db=dbf.newDocumentBuilder();
