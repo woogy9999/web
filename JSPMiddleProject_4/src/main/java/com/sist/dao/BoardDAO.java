@@ -18,16 +18,7 @@ public class BoardDAO {
 			System.out.println(e.getMessage());
 		}
 	}
-	// 기능 설정
-	/*
-	 * 	<select id="boardListData" resultType="BoardVO" parameterType="hashmap">
-  	 SELECT no,subject,name,regdate,hit,num 
-  	 FROM (SELECT no,subject,name,regdate,hit,num,rownum as num 
-  	 FROM (SELECT no,subject,name,regdate,hit 
-  	 FROM board ORDER BY no DESC))
-  	 WHERE num BETWEEN #{start} and #{end}
-  	</select>
-	 */
+	
 	public static List<BoardVO> boardListData(Map map){
 		SqlSession session=ssf.openSession();
 		List<BoardVO> list=session.selectList("boardListData",map);
