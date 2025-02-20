@@ -57,6 +57,20 @@ public class BoardDAO {
 		session.commit();
 		session.close();
 	}
+	
+	// 상세보기
+	   public static BoardVO boardDetailData(int no)
+	   {
+		   SqlSession session=ssf.openSession();
+		   // 조회수 증가 
+		   session.update("hitIncrement",no);
+		   session.commit();
+		   // 데이터 가지고 오기
+		   BoardVO vo=session.selectOne("boardDetailData",no);
+		   // 반환 
+		   session.close();
+		   return vo;
+	   }
 	/*
 	 *   	<!-- 조회수 증가 -->
   	<update id="hitIncrement" parameterType="int">

@@ -11,11 +11,11 @@
 	<!-- 목록 출력 -->
 	<select id="boardListData" resultType="BoardVO"
 		parameterType="hashmap">
-		SELECT no,subject,name,regdate,hit,num
-		FROM (SELECT no,subject,name,regdate,hit,rownum as num
-		FROM (SELECT no,subject,name,regdate,hit
-		FROM board ORDER BY no ASC))
-		WHERE num BETWEEN #{start} and #{end}
+		SELECT no,subject,name,regdate,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit,num 
+		FROM (SELECT no,subject,name,regdate,hit,rownum as num 
+		FROM (SELECT no,subject,name,regdate,hit 
+		FROM board ORDER BY no ASC)) 
+		WHERE num BETWEEN #{start} and #{end} 
 	</select>
 	
 	  <!-- 총페이지 구하기 -->
@@ -29,7 +29,8 @@
   		<selectKey keyProperty="no" resultType="int" order="BEFORE">
   			SELECT NVL(MAX(no)+1,1) as no FROM board
   		</selectKey>
-  			INSERT INTO board VALUES(#{NO},#{name},#{subject},#{content},#{pwd},SYSDATE,0)
+  			INSERT INTO board VALUES(#{no},#{name},#{subject},#{content},#{pwd},SYSDATE,0)
+  			
   	</insert>
   	
   	<!-- 조회수 증가 -->

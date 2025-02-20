@@ -16,7 +16,7 @@
 
 .row {
 	margin: 0px auto;
-	width: 700px;
+	width: 800px;
 }
 </style>
 </head>
@@ -42,7 +42,11 @@
 			
 				<tr>
 					<td widtd=10% class="text-center">${vo.no }</td>
-					<td widtd=45% >${vo.subject }</td>
+					<td widtd=45% ><a href="detail.do?no=${vo.no }">${vo.subject }
+						<c:if test="${vo.dbday==today}">
+						 <sup><img src="img/new.gif"/></sup>
+						</c:if>
+					</td>
 					<td widtd=15% class="text-center">${vo.name}</td>
 					<td widtd=20% class="text-center">
 					<fmt:formatDate value="${vo.regdate }" pattern="yyyy-MM-dd"/>
@@ -55,9 +59,10 @@
 			<table class="table">
 				<tr>
 					<td class="text-center">
-						<a href="#" class="btn btn-sm btn-danger">이전</a>
-						${curpage} page / ${totalpage} pages 
-						<a href="#" class="btn btn-sm btn-danger">다음</a>
+						<a href="list.do?page=${curpage>1?curpage-1:curpage }" class="btn btn-sm btn-danger">이전</a>
+						${curpage } page / ${totalpage } pages 
+						<a href="list.do?page=${curpage<totalpage?curpage+1:curpage }" class="btn btn-sm btn-danger">다음</a>
+						
 					</td>
 				</tr>
 			</table>

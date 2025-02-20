@@ -4,8 +4,15 @@ import java.util.Date;
 
 public class BoardVO {
 	private int no,hit;
-	private String name,subject,content,pwd;
+	private String name,subject,content,pwd,dbday;
 	private Date regdate;
+	
+	public String getDbday() {
+		return dbday;
+	}
+	public void setDbday(String dbday) {
+		this.dbday = dbday;
+	}
 	public int getNo() {
 		return no;
 	}
