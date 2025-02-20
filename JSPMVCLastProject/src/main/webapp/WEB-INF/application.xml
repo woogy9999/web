@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+	<context:component-scan basePackage="com.sist.model"/> <!-- 패키지 등록하는거임  낱개로는 bean-->
+</beans>
