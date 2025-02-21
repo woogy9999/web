@@ -94,7 +94,7 @@ public class DIspatcherServlet extends HttpServlet {
 					
 					if(rm.value().equals(uri))
 					{	// food_list() 
-						String jsp=(String)m.invoke(obj, request);
+						String jsp=(String)m.invoke(obj, request,response);
 						
 						if(jsp==null) { // void  / 리턴형 없을때
 							
