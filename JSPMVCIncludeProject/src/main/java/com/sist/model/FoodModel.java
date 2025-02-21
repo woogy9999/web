@@ -3,6 +3,7 @@ package com.sist.model;
 import com.sist.controller.Controller;
 import com.sist.controller.RequestMapping;
 
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import com.sist.dao.*;
@@ -45,4 +46,47 @@ public class FoodModel {
 		return "../main/main.jsp";
 		
 	}
+	@RequestMapping("food/detail_before.do")
+	public String food_detail_before(HttpServletRequest request,HttpServletResponse response) {
+		
+		String fno=request.getParameter("fno");
+		// 쿠키저장
+		// 1. cookie 생성
+		Cookie cookie=new Cookie("food_"+fno,fno);
+		// 2. path 설정
+		cookie.setPath("/");
+		// 3. 저장 기간
+		cookie.setMaxAge(60*60*24);
+		// 4. 브라우저로 전송
+		response.addCookie(cookie);
+		// 상세보기
+		return "redirect:../food/detail.do?fno="+fno;
+	}
+	
+	@RequestMapping("food/detail.do")
+	public String food_detail(HttpServletRequest request,HttpServletResponse response) {
+			String fno=request.getParameter("fno");
+			FoodVO vo=FoodDAO.foodDetailData(Integer.parseInt(fno));
+			//	서울 종로구 평창동 281-1 녹원가든
+			String addr1=vo.getAddress();
+//			addr1 = addr1.trim(); // 앞뒤 공백 제거, addr1은 이제 "서울 종로구 평창동 281-1 녹원가든"
+//			addr1 = addr1.substring(addr1.indexOf(" ") + 1); // 첫 번째 공백을 넘겨서 "종로구 평창동 281-1 녹원가든"
+//			addr1 = addr1.substring(addr1.indexOf(" ") + 1); // 두 번째 공백을 넘겨서 "평창동 281-1 녹원가든"
+//			String addr2 = addr1.trim(); // 이제 addr2는 "평창동 281-1 녹원가든"
+//			String addr3 = addr2.substring(0, addr2.indexOf(" ")); // "평창동"만 추출
+//			System.out.println(addr3.trim()); // 출력: 평창동
+
+			StringTokenizer st=new StringTokenizer(addr1);
+			String s1=st.nextToken();
+			String s2=st.nextToken();
+			String addr3=st.nextToken();
+			System.out.println(addr3);
+			request.setAttribute("addr", addr3.trim());
+			request.setAttribute("vo", vo);
+			
+			// include
+			request.setAttribute("main_jsp", "../food/detail.jsp");
+			return"../main/main.jsp";
+	}
+	
 }
