@@ -24,5 +24,6 @@
  	
  	<mappers>
  		<mapper resource="com/sist/mapper/food-mapper.xml"/>
+ 		<mapper resource="com/sist/mapper/emp-mapper.xml"/>
  	</mappers>
  </configuration>
