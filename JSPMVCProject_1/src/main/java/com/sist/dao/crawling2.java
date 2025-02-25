@@ -65,7 +65,10 @@ public class crawling2 {
 //				Elements tag_line = doc2.select("div.tag_line");
 //				Elements mark_img = doc2.select("div.mark_img img");
 				Elements inter_title = doc2.select("p.top_title");
-				Elements inter_image = doc2.select("div.subtit_type01");
+			//	Elements inter_image = doc2.select("div.subtit_type01");
+				Elements inter_image1 = doc2.select("div.box_inner.mix_cont div.img img");
+				Elements q3 = doc2.select("div.box_question p.question");
+				Elements a3 = doc2.select("div.box_question div.answer");
 				
 				
 				for (int j = 0; j < title.size(); j++) {
@@ -80,8 +83,14 @@ public class crawling2 {
 //						System.out.println(poster1.get(i));
 //						System.out.println("인터뷰페이지");
 						
-						System.out.println(inter_title.get(j).text().replace("따옴표", ""));
-						System.out.println(inter_image.get(j).text());
+						System.out.println("q3"+q3.get(j).text());
+						System.out.println("a3"+a3.get(j).text());
+						System.out.println("q3"+q3.get(j+1).text());
+						System.out.println("a3"+a3.get(j+1).text());
+						System.out.println("q3"+q3.get(j+2).text());
+						System.out.println("a3"+a3.get(j+2).text());
+						System.out.println("q3"+q3.get(j+3).text());
+						System.out.println("a3"+a3.get(j+3).text());
 						System.out.println("=================="+i);
 						
 					} catch (Exception ex) {
