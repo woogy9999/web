@@ -50,7 +50,7 @@ let auto=()=>{
 		<td class="text-center">
 			<img src="../image/m1.jpg" style="width: 320px; height: 350px">
 		</td>
-		</tr>
+		</tr>  
 		<tr>
 		<td class="text-center">
 			<input type=button class="btn-sm btn-info" value="이전" onclick="prev()">
