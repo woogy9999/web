@@ -105,6 +105,7 @@ public class FoodModel {
 			obj.put("phone", vo.getPhone());
 			obj.put("type", vo.getType());
 			obj.put("time", vo.getTime());
+			obj.put("price", vo.getPrice());
 			obj.put("parking", vo.getParking());
 			obj.put("theme", vo.getTheme());
 			obj.put("content", vo.getContent());
