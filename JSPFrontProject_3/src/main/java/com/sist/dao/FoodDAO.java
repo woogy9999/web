@@ -61,7 +61,7 @@ public class FoodDAO {
 	}
 	public static FoodVO foodFindDetailData(int fno) {
 		SqlSession session=ssf.openSession();
-		FoodVO vo=session.selectOne("foodFindTotalPage",fno);
+		FoodVO vo=session.selectOne("foodFindDetailData",fno);
 		session.close();
 		return vo;
 	}
