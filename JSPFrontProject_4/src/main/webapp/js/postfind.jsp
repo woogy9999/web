@@ -15,7 +15,7 @@
     								| 위치,화면크기
     			|		| 화면 이동=> href
     			body / form .. (태그 관리)
-    		
+    		 
     		=> write / querySelector()
     	내장 객체
     	------- String / Number / Date / Array
