@@ -149,7 +149,7 @@
       
       
       
-      <Context docBase="JSPFrontProject_3" path="/JSPFrontProject_3" reloadable="true" source="org.eclipse.jst.jee.server:JSPFrontProject_3"/><Context docBase="JSPMVCIncludeProject" path="/JSPMVCIncludeProject" reloadable="true" source="org.eclipse.jst.jee.server:JSPMVCIncludeProject"/><Context docBase="JSPFrontProject_4" path="/JSPFrontProject_4" reloadable="true" source="org.eclipse.jst.jee.server:JSPFrontProject_4"/><Context docBase="JSPFrontProject_5" path="/JSPFrontProject_5" reloadable="true" source="org.eclipse.jst.jee.server:JSPFrontProject_5"/><Context docBase="JSPFrontProject_6" path="/JSPFrontProject_6" reloadable="true" source="org.eclipse.jst.jee.server:JSPFrontProject_6"/></Host>
+      <Context docBase="JSPFrontProject_6" path="/JSPFrontProject_6" reloadable="true" source="org.eclipse.jst.jee.server:JSPFrontProject_6"/><Context docBase="JSPFrontProject_7" path="/JSPFrontProject_7" reloadable="true" source="org.eclipse.jst.jee.server:JSPFrontProject_7"/><Context docBase="JSPMVCTestProject" path="/JSPMVCTestProject" reloadable="true" source="org.eclipse.jst.jee.server:JSPMVCTestProject"/><Context docBase="JSPMiddleProject_4" path="/JSPMiddleProject_4" reloadable="true" source="org.eclipse.jst.jee.server:JSPMiddleProject_4"/></Host>
     
     
     
