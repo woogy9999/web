@@ -72,7 +72,7 @@ img:hover,a:hover {
 					<td width=15% style="color:gray">주차</td>
 					<td width=55% id="parking"></td>
 				</tr>
-				
+				 
 				<tr>
 					<td width=15% style="color:gray">영업시간</td>
 					<td width=55% id="time"></td>
