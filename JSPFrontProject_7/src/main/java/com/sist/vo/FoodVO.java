@@ -1,30 +1,31 @@
 package com.sist.vo;
 
 public class FoodVO {
- private String fno,name,poster;
+	private int fno;
+	private String name, poster;
 
-public String getFno() {
-	return fno;
-}
+	public int getFno() {
+		return fno;
+	}
 
-public void setFno(String fno) {
-	this.fno = fno;
-}
+	public void setFno(int fno) {
+		this.fno = fno;
+	}
 
-public String getName() {
-	return name;
-}
+	public String getName() {
+		return name;
+	}
 
-public void setName(String name) {
-	this.name = name;
-}
+	public void setName(String name) {
+		this.name = name;
+	}
 
-public String getPoster() {
-	return poster;
-}
+	public String getPoster() {
+		return poster;
+	}
 
-public void setPoster(String poster) {
-	this.poster = poster;
-}
- 
+	public void setPoster(String poster) {
+		this.poster = poster;
+	}
+
 }

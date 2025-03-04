@@ -7,8 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<center>
-	  <h1>Ajax 처리</h1>
-	</center>
+  <center>
+   <h1>Ajax 처리</h1>
+  </center>
 </body>
 </html>
