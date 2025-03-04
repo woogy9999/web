@@ -149,7 +149,7 @@
       
       
       
-      <Context docBase="JSPFrontProject_temp" path="/JSPFrontProject_temp" reloadable="true" source="org.eclipse.jst.jee.server:JSPFrontProject_temp"/></Host>
+      <Context docBase="JSPFrontProject_7" path="/JSPFrontProject_7" reloadable="true" source="org.eclipse.jst.jee.server:JSPFrontProject_7"/></Host>
     
     
     
