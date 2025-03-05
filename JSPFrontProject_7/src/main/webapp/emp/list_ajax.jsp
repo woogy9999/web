@@ -25,7 +25,7 @@
 			<th class="text-center">급여</th>
 		</tr>
 		<c:forEach var="vo" items="${list }">
-			<tr>
+			<tr> 
 				<td class="text-center">${vo.empno }</td>
 				<td class="text-center">${vo.ename }</td>
 				<td class="text-center">${vo.job }</td>

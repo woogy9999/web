@@ -13,7 +13,7 @@
 }
 
 .row {
-	margin: opx auto;
+	margin: 0px auto;
 	width: 800px;
 }
 </style>
