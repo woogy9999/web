@@ -12,11 +12,11 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @Controller
 public class SeoulModel {
-	private static String[] tab= {"","seoul_location","seoul_nature","seoul_shop","seoul_food"};
+	private String[] tab= {"","seoul_location","seoul_nature","seoul_shop","seoul_food"};
 	
 	//seoul_list.do?mode=1 이렇게 넘어올거임
 	@RequestMapping("seoul/seoul_list.do")
-	public static String seoul_list(HttpServletRequest request, HttpServletResponse response) {
+	public String seoul_list(HttpServletRequest request, HttpServletResponse response) {
 		
 		String mode=request.getParameter("mode");
 		String page=request.getParameter("page");
@@ -28,6 +28,7 @@ public class SeoulModel {
 		map.put("start", (curpage*12)-11);
 		map.put("end", (curpage*12));
 		map.put("table_name", tab[Integer.parseInt(mode)]);
+
 		List<SeoulVO> list=SeoulDAO.seoulListData(map);
 		int totalpage=SeoulDAO.seoulTotalPage(map);
 		final int BLOCK=10;
