@@ -7,6 +7,7 @@ import com.sist.controller.RequestMapping;
 import com.sist.vo.*;
 import com.sist.dao.*;
 
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 // JSP => Model => DAO => Model => JSP
@@ -23,8 +24,8 @@ public class FoodModel {
 		}
 		int curpage=Integer.parseInt(page);
 		Map map=new HashMap();
-		map.put("start", (curpage*20)-19);
-		map.put("end", (curpage*20));
+		map.put("start", (curpage*12)-11);
+		map.put("end", (curpage*12));
 		List<FoodVO> list=FoodDAO.foodListData(map);
 		int totalpage=FoodDAO.foodTotalPage();
 		final int BLOCK=10;
@@ -43,4 +44,42 @@ public class FoodModel {
 		request.setAttribute("main_jsp", "../food/food_list.jsp");
 		return "../main/main.jsp";
 	}
+	@RequestMapping("food/food_detail_before.do")
+	  public String food_detail_before(HttpServletRequest request, HttpServletResponse response) {
+		
+		String fno=request.getParameter("fno");
+		Cookie cookie=new Cookie("food_"+fno,fno);
+		cookie.setPath("/"); // 루트 
+		cookie.setMaxAge(60*60*24);
+		// 전송
+		response.addCookie(cookie);
+		
+		// 화면 이동
+		return "redirect:food_detail.do?fno="+fno;
+		
+	}
+//	../food/food_detail_before.do?fno=${vo.fno }
+	
+			  
+	@RequestMapping("food/food_detail.do")
+	  public String food_detail(HttpServletRequest request,
+			  HttpServletResponse response)
+	  {
+		  String fno=request.getParameter("fno");
+		  FoodVO vo=FoodDAO.foodDetailData(Integer.parseInt(fno));
+		  // 경기 포천시 내촌면 내리 267
+		  String addr=vo.getAddress();
+		  addr = addr.substring(addr.trim().indexOf(" "));
+		  //포천시 내촌면 내리 267
+		  String addr1=addr.trim();
+		  addr1=addr1.substring(addr1.trim().indexOf(" "));
+		  //내촌면 내리 267
+		  String addr2=addr1.trim();
+		  addr2=addr1.substring(0,addr2.indexOf(" ")+1);
+		  
+		  request.setAttribute("addr", addr2);
+		  request.setAttribute("vo", vo);
+		  request.setAttribute("main_jsp", "../food/food_detail.jsp");
+		  return "../main/main.jsp";
+	  }
 }
