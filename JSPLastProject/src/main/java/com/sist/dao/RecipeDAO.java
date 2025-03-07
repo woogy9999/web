@@ -72,8 +72,8 @@ public class RecipeDAO {
 	}
 	
 	public static List<RecipeVO> recipeListData(Map map) {
-		List<RecipeVO> list=null;
 		SqlSession session=null;
+		List<RecipeVO> list=null;
 		try {
 			session=ssf.openSession();
 			list=session.selectList("recipeListData",map);
@@ -93,6 +93,53 @@ public class RecipeDAO {
 		try {
 			session=ssf.openSession();
 			total=session.selectOne("recipeTotalPage");
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+			if(session!=null)
+				session.close();
+		}
+		return total;
+	}
+	
+	/*
+	 * 
+	 * 	<select id="recipeChefListData" resultType="ChefVO" parameterType="hashmap">
+	  SELECT no,chef,poster,mem_cont1,mem_cont3,mem_cont7,mem_cont2,num
+	  FROM (SELECT no,chef,poster,mem_cont1,mem_cont3,mem_cont7,mem_cont2,rownum as num
+	  FROM (SELECT no,chef,poster,mem_cont1,mem_cont3,mem_cont7,mem_cont2
+	  FROM chef ORDER BY no ASC))
+	  WHERE num BETWEEN #{start} AND #{end}
+	</select>
+	<select id="recipeChefTotalPage" resultType="int"> 
+		SELECT CEIL(COUNT(*)/30.0) FROM chef
+	</select>
+
+	 */
+	
+	public static List<ChefVO> recipeChefListData(Map map) {
+		SqlSession session=null;
+		List<ChefVO> list=null;
+		try {
+			session=ssf.openSession();
+			list=session.selectList("recipeChefListData",map);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+			if(session!=null)
+				session.close();
+		}
+		return list;
+	}
+	
+	public static int recipeChefTotalPage() {
+		int total=0;
+		SqlSession session=null;
+		try {
+			session=ssf.openSession();
+			total=session.selectOne("recipeChefTotalPage");
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();

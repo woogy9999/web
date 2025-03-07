@@ -51,6 +51,7 @@ public class MainModel {
 		// request 한번쓰는거 / session 계속 쓰는거.
 		request.setAttribute("main_jsp", "../main/home.jsp");
 		// 화면 변경
+		// include =. 파일에서 request로 공유할 수 있다.
 		return "../main/main.jsp";
 	}
 }
