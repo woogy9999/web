@@ -126,8 +126,20 @@ $(function(){
 			  	  <td colspan="4" class="text-left" valign="top" height="200px"><pre style="white-space: pre-wrap; border:none; background-color: white">${vo.content }</pre></td>
 			  	</tr>
 			  	<tr>
+			  	 <!-- 
+			  	 		board_update.do => DispatcherServlet
+			  	 							Controller
+			  	 								|
+			  	 							~Model => @RequestMapping
+			  	 									  ---------------
+			  	 									  
+			  	 		public A(@Component B b){}
+			  	 		
+			  	 		@RequestMapping
+			  	 		public
+			  	  -->
 			  	  <td colspan="4" class="text-right">
-			  	   <a href=# class="btn btn-outline-danger btn-xs" >수정</a>
+			  	   <a href="../board/board_update.do?no=${vo.no}&page=${page}" class="btn btn-outline-danger btn-xs" >수정</a>
 			  	   <span href=# class="btn btn-outline-success btn-xs" id="del">삭제</span>
 			  	   <a href="../board/board_list.do?page=${page }" class="btn btn-outline-warning btn-xs" >목록</a>
 			  	  </td>

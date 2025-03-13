@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 </head>
 <body>
 	<div class="breadcumb-area"
@@ -28,7 +29,8 @@
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a href="#"><i
 									class="fa fa-home" aria-hidden="true"></i> Home</a></li>
-							<li class="breadcrumb-item active" aria-current="page">관리자 페이지</li>
+							<li class="breadcrumb-item active" aria-current="page">관리자
+								페이지</li>
 						</ol>
 					</nav>
 				</div>
@@ -40,15 +42,16 @@
 	<!-- ****** Archive Area Start ****** -->
 	<section class="archive-area section_padding_80">
 		<div class="container">
-			<div class="row" >
-			 <div class="col-sm-2">
-			  <jsp:include page="admin_menu.jsp"></jsp:include>
-			 	<div class="col-sm-10">
-			 	  <jsp:include page="${admin_jsp }"></jsp:include>
-			 	</div>
-			 </div>
+			<div class="row">
+				<div class="col-sm-2">
+					<jsp:include page="admin_menu.jsp"></jsp:include>
+				</div>
+				<div class="col-sm-10">
+					<jsp:include page="${admin_jsp }"></jsp:include>
+				</div>
 			</div>
 		</div>
 	</section>
+
 </body>
 </html>

@@ -99,13 +99,11 @@
 									<td class="text-right">
 									
 									<c:if test="${sessionScope.id!=null }">
-									<a href="#"
-										class="btn btn-sm btn-success">좋아요</a> <a href="#"
-										class="btn btn-sm btn-info">찜하기</a> <a href="#"
-										class="btn btn-sm btn-danger">예약하기</a>
+									<a href="#" class="btn btn-sm btn-success">좋아요</a> 
+									<a href="#" class="btn btn-sm btn-info">찜하기</a> 
+									<a href="#" class="btn btn-sm btn-danger">예약하기</a>
 									</c:if>
-										 <a
-										href="../food/list.do" class="btn btn-sm btn-primary">목록</a></td>
+										 <a href="../food/list.do" class="btn btn-sm btn-primary">목록</a></td>
 								</tr>
 							</table>
 
@@ -455,34 +453,19 @@
 							</div>
 
 							<!-- Leave A Comment -->
+							<c:if test="${sessionScope.id!=null }">
 							<div class="leave-comment-area section_padding_50 clearfix">
 								<div class="comment-form">
-									<h4 class="mb-30">Leave A Comment</h4>
-
-									<!-- Comment Form -->
+								
 									<form action="#" method="post">
 										<div class="form-group">
-											<input type="text" class="form-control" id="contact-name"
-												placeholder="Name">
+											<textarea  name="message" id="message" cols="78" rows="4" placeholder="Message" style="float: left"></textarea>
+											<button type="submit" class="btn btn-primary" style="width:100px; height: 95px; float:left">댓글쓰기</button>
 										</div>
-										<div class="form-group">
-											<input type="email" class="form-control" id="contact-email"
-												placeholder="Email">
-										</div>
-										<div class="form-group">
-											<input type="text" class="form-control" id="contact-website"
-												placeholder="Website">
-										</div>
-										<div class="form-group">
-											<textarea class="form-control" name="message" id="message"
-												cols="30" rows="10" placeholder="Message"></textarea>
-										</div>
-										<button type="submit" class="btn contact-btn">Post
-											Comment</button>
 									</form>
 								</div>
 							</div>
-
+							</c:if>
 						</div>
 					</div>
 				</div>
