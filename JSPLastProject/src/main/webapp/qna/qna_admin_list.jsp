@@ -23,20 +23,16 @@
                 <tr>
                  <td width=10% class="text-center">${count }</td>
                  <td width=40%>
-           
-                  
                   ${vo.subject }
-                 
-                  
                  </td>
                  <td width=10% class="text-center">${vo.name }</td>
                  <td width=15% class="text-center">${vo.dbday }</td>
                  <td width=10% class="text-center">${vo.hit }</td>
                  <td width="15%" class="text-center">
                   <c:if test="${vo.anok=='y' }">
-                   <span class="btn btn-success btn-sm">답변완료</span>
                    <a href="#" class="btn btn-warning btn-sm">수정</a>
-                  </c:if>
+                   <a href="../qna/qna_admin_delete.do?gi=${vo.group_id }" class="btn btn-success btn-sm">삭제</a>
+                  </c:if> 
                   <c:if test="${vo.anok=='n' }">
                    <a href="../qna/qna_admin_insert.do?gi=${vo.group_id }" class="btn btn-danger btn-sm">답변대기</a>
                   </c:if>
