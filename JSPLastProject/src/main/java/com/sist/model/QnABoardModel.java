@@ -14,6 +14,16 @@ import com.sist.dao.*;
 
 @Controller
 public class QnABoardModel {
+	/*
+	 * 		@RequestMapping : GET/POST
+	 * 		---------------
+	 * 			  |
+	 * 			@GetMapping
+	 * 			@PostMapping
+	 * 		Controller => DispatcherServlet
+	 * 	
+	 * 
+	 */
 	@RequestMapping("qna/qna_list.do")
 	public String qna_list(HttpServletRequest request, HttpServletResponse response) {
 		String page = request.getParameter("page");
@@ -144,6 +154,43 @@ public class QnABoardModel {
 		String gi=request.getParameter("group_id");
 		QnABoardDAO.qnaDelete(Integer.parseInt(gi));
 		return "redirect:../qna/qna_list.do";
+	}
+	/*
+	 * 
+	 * 		=> void => javascript
+	 * 		=> 화면 출력 => 메인
+	 * 		=> 기존 화면 => redirect
+	 * 
+	 */
+	@RequestMapping("qna/qna_update.do")
+	public String qna_update(HttpServletRequest request, HttpServletResponse response) {
+		
+		// jno=1
+		
+		String no=request.getParameter("no");
+		// 사용자 요청 데이터 => ?no=1 ,submit
+		// <input type=text name="id>
+		// => ?id=aaa
+		
+		QnABoardVO vo=QnABoardDAO.qnaUpdateData(Integer.parseInt(no));
+		request.setAttribute("vo", vo);
+		request.setAttribute("main_jsp", "../qna/qna_update.jsp");
+		return "../main/main.jsp";
+	}	
+	
+	@RequestMapping("qna/qna_update_ok.do")
+	public void qna_update_ok(HttpServletRequest request, HttpServletResponse response) {
+		
+		String subject=request.getParameter("subject");
+		String content=request.getParameter("content");
+		String no=request.getParameter("no");
+		
+		QnABoardVO vo=new QnABoardVO();
+		vo.setSubject(subject);
+		vo.setContent(content);
+		vo.setNo(Integer.parseInt(no));
+		
+		QnABoardDAO.qnaUpdate(vo);
 	}
 	
 	@RequestMapping("qna/qna_admin_delete.do")

@@ -140,6 +140,15 @@ public class QnABoardDAO {
 		return vo;
 		
 	}
+	
+	// => 회원 수정 => id(비활성화) / pwd => addMonth()
+	public static QnABoardVO qnaUpdateData(int no) {
+		SqlSession session=ssf.openSession(true);
+		QnABoardVO vo=session.selectOne("qnaDetailData",no); 
+		session.close();
+		return vo;
+		
+	}
 	/*
 	 * 	<delete id="qnaDelete" parameterType="int">
 		DELETE FROM qnaBoard
@@ -167,6 +176,21 @@ public class QnABoardDAO {
 		session.delete("qnaAdminDelete",group_id);
 		session.close();
 	}
+	/*
+	 * <update id="qnaUpdate" parameterType="QnABoardVO">
+		UPDATE qnaBoard SET
+		subject=#{subject},content=#{content}
+		WHERE no=#{no}
+	</update>
+	*/
+
+	public static void qnaUpdate(QnABoardVO vo) {
+
+		SqlSession session=ssf.openSession(true);
+		session.update("qnaUpdate",vo);
+		session.close();
+	}
+	 
 	/*
 	 * 	<update id="qnaAdminAnDeleteOk" parameterType="int">
 		UPDATE qnaBoard SET
