@@ -83,6 +83,16 @@ public class FoodModel {
 		  
 		  request.setAttribute("addr", addr2);
 		  request.setAttribute("vo", vo);
+
+		  //여기 댓글
+		  ReplyVO rvo=new ReplyVO();
+		  rvo.setRno(Integer.parseInt(fno));
+		  rvo.setType(1);
+		  List<ReplyVO> list=ReplyDAO.replyListData(rvo);
+		  int count=ReplyDAO.replyCount(rvo);
+		  request.setAttribute("count", count);
+		  request.setAttribute("rList", list);
+		  
 		  request.setAttribute("main_jsp", "../food/food_detail.jsp");
 		  return "../main/main.jsp";
 	  }

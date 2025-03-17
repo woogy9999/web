@@ -106,7 +106,14 @@ public class RecipeModel {
 			mList.add(st.nextToken());
 			iList.add(st.nextToken());
 		}  
-
+		  ReplyVO rvo=new ReplyVO();
+		  rvo.setRno(Integer.parseInt(no));
+		  rvo.setType(2);
+		  List<ReplyVO> list=ReplyDAO.replyListData(rvo);
+		  int count=ReplyDAO.replyCount(rvo);
+		  request.setAttribute("count", count);
+		  request.setAttribute("rList", list);
+		  
 		request.setAttribute("vo", vo);
 		request.setAttribute("mList", mList);
 		request.setAttribute("iList", iList);
@@ -144,7 +151,8 @@ public class RecipeModel {
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("endPage", endPage);
 		request.setAttribute("no", no);
-
+		request.setAttribute("chef", list.get(0).getChef());
+		
 		request.setAttribute("main_jsp", "../recipe/chef_make.jsp");
 		return "../main/main.jsp";
 	}
