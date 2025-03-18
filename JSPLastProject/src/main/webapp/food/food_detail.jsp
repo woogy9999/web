@@ -127,10 +127,10 @@ $(function(){
 									<c:if test="${sessionScope.id!=null }">
 									<a href="#" class="btn btn-sm btn-success">좋아요</a> 
 									<c:if test="${rcount==0 }">
-									  <a href="../jjim/jjim_insert.do?fno=${vo.fno }&type=1" class="btn btn-sm btn-info">찜하기</a>
+									  <a href="../jjim/jjim_insert.do?no=${vo.fno }&type=1" class="btn btn-sm btn-outline-info">찜하기</a>
 									</c:if>
 									<c:if test="${rcount!=0 }">
-									  <span class="btn btn-sm btn-default">찜하기</span>
+									  <span class="btn btn-sm btn-outline-danger">찜하기</span>
 									</c:if> 
 									<a href="#" class="btn btn-sm btn-danger">예약하기</a>
 									</c:if>

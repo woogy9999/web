@@ -43,10 +43,11 @@
 			<div class="row" >
 			 <div class="col-sm-2">
 			  <jsp:include page="my_menu.jsp"></jsp:include>
-			 	<div class="col-sm-10">
+			 	
+			 </div>
+			 <div class="col-sm-10">
 			 	  <jsp:include page="${my_jsp }"></jsp:include>
 			 	</div>
-			 </div>
 			</div>
 		</div>
 	</section>
