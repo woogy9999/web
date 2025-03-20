@@ -45,7 +45,7 @@
 			  <jsp:include page="my_menu.jsp"></jsp:include>
 			 	
 			 </div>
-			 <div class="col-sm-10">
+			 	<div class="col-sm-10">
 			 	  <jsp:include page="${my_jsp }"></jsp:include>
 			 	</div>
 			</div>

@@ -36,7 +36,7 @@
 
     <!-- ****** Archive Area Start ****** -->
     <section class="archive-area section_padding_80">
-        <div class="container">
+        <div class="container" style="margin:0px auto">
             <div class="row" style="width:800px;margin:0px auto">
              <form method="post" action="../qna/qna_insert_ok.do">
               <table class="table">

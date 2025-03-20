@@ -133,6 +133,7 @@ public class NoticeModel {
 			return "../main/main.jsp";
 			
 		}
+		
 		@RequestMapping("admin/notice_update_ok.do")
 		public String notice_update_ok(HttpServletRequest request,HttpServletResponse response) {
 			
