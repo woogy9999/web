@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sist.mapper.reserve-mapper">
+<!-- 맛집 정보 -->
+
+	<select id="reserveFoodData" resultType="FoodVO" parameterType="hashmap">
+		SELECT fno,poster,name,rdays,rownum
+		FROM (SELECT fno,poster,name,rdays 
+		FROM project_food WHERE type LIKE '%'||#{type}||'%' AND rownum&lt;=50 ORDER BY hit DESC)
+	</select>
+	
+</mapper>
